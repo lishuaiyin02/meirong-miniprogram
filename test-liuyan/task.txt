@@ -1,0 +1,67 @@
+1.软件著作权 
+2.后台管理登录密码，带*（完成）
+  还有验证码看看是否能整  还有 扫码登录
+  后台密码的验证根据openid和密码结合进行验证，防止有重复的密码（完成）
+3.增加申请入驻版块和使用说明版块。（完成）
+   申请入驻版块 （公众号二维码） 1.首先从公众号中获得对应的g_id，2.然后获得入驻的流程（文档写下来）3.回到小程序进行入驻 （password,describe,fileID,name,date_fileid(记录headpath的有效链接时长)）
+4.增加修改公众号信息的功能 包括头像，名称，密码等的修改（完成）
+5.优化表情，在留言的输入框中进行留言表情的选择，还有字数的显示限制等。（完成）
+6.作者和本人的回复功能，增加互动。
+7.本周末就小程序的使用写一篇文章（付费内容，供3中的2查看）（完成）
+8.完善点击公众号进行搜索功能。（完成）
+9.完善文章排序倒过来（完成）
+10.更新赞的功能，根据openID数组是否存在，点赞和取消赞改变openID的数组。（完成）
+11.增加两种驻入方式一种是现在的，另一种是先在小程序后台发布之后弹出可以复制的路径，然后粘贴到公众号后端文章中。（目前不更改）
+
+  
+          <!-- <scroll-view scroll-y='true' bindscroll="emojiScroll" style="height:200px">
+            <block wx:for="{{emojis}}" wx:for-item="e" wx:key="index">
+              <view class="emoji-cell">
+                <image class="touch-active" catchtap="emojiChoose" src="../../images/emoji.png" data-emoji="{{e.char}}" data-oxf="{{e.emoji}}"></image>
+              </view>
+            </block>
+          </scroll-view> -->
+
+
+
+<view class="clear">
+      <text style="color: #ccc; font-size: 14px; float: right; margin-right: 5%;">{{current}} /500 </text>
+</view>
+    <view class="emoji0" catchtap="emojiShowHide">
+      <image class="em0ji" src='../../images/emoji.png' style='width:40rpx;height:40rpx;margin-left: 1%'></image>
+    </view>
+
+
+
+/*表情的图标设置*/
+
+.emoji-move-show {
+display: block;/*块内容器*/
+}
+
+.emoji-move-hide {
+  display: none;/*控件消失并且位置不保留*/
+}
+.emoji-cell {
+  width: 9.09%;
+  height: 33px;
+  display: inline-block;
+}
+
+.emoji-cell image {
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+
+ <!-- {{isLoad ? 'no-emoji-move' : ''}} -->
+        <scroll-view scroll-y="true" bindscroll="emojiScroll" style="height:200px">
+          <block wx:for="{{emojis}}" wx:for-item="e" wx:key="index">
+            <view class="emoji-cell">
+              <image class="touch-active" catchtap="emojiChoose" src="../../images/emoji.png" data-emoji="{{e.char}}" data-oxf="{{e.emoji}}"></image>
+            </view>
+          </block>
+        </scroll-view>
+

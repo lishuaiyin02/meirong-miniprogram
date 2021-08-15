@@ -1,0 +1,245 @@
+/* pages/mycenter/mycenter.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #F5F5F5;
+}
+/* 公众号所有信息 */
+.gong-content{
+  height: 160rpx;
+  display: flex;
+  flex-direction: row;
+  padding-left: 10rpx;
+  padding-top: 10rpx;
+  vertical-align: middle;
+  background-color: #fff;
+}
+
+/* 公众号头像 */
+.gong-img{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-top: 14rpx;
+}
+
+/* 公众号名称 */
+.gong-name{
+  font-size: 34rpx;
+  font-family: '微软雅黑'；
+}
+
+/* 公众号描述 */
+.gong-describe{
+  font-size: 28rpx;
+  margin-top: 10rpx;
+  width: 500rpx;
+  /* 超出文本隐藏 */
+  overflow:hidden;
+  /* 并显示省略号 */
+  text-overflow: ellipsis;
+  /* 不换行 */
+  white-space:nowrap;
+  color: rgb(179, 177, 177);
+  font-family: '微软雅黑'；
+}
+
+/* 提醒复制路径 */
+.remind-copy{
+  height: 30rpx;
+  text-align: center;
+  line-height: 30rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  font-size:30rpx;
+  color: #cccccc;
+}
+
+.tui-accordion-content{
+  margin: 10px;
+  border: 1px solid #c8c7cc;
+  border-radius: 5px;
+  overflow: visible;
+}
+
+.tui-menu-list{
+  line-height: 80rpx;
+  color: #555;
+  font-size: 35rpx;
+  /* padding: 0 0rpx 0 10px; */
+  position: relative; /*元素框偏移某个距离。元素扔保持其未定位前的形状，它原来所占的空间仍保留*/
+}
+.tui-hide{
+  display: none;/*控件消失并且位置不保留*/
+}
+.tui-show{
+  display: block;/*块内容器*/
+}
+/* 清除浮动 */
+.tui-clear:after{
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+}
+
+.artical-container{
+  width: 99%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: row;
+  margin-top: 40rpx;
+  background: #fff;
+}
+.aticle-img{
+  width: 200rpx;
+  height: 200rpx;
+  padding-left: 10rpx;
+}
+
+.article-title{
+  display: -webkit-box;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+  -webkit-line-clamp: 2; 
+  /*超出文本隐藏*/
+  overflow: hidden;
+  /*并显示省略号*/
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+.article-describe{
+  display: -webkit-box;
+  width: 90%;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  color: rgb(199, 198, 198);
+  -webkit-line-clamp: 2;
+  /* 超出文本隐藏 */
+  overflow:hidden;
+  /* 并显示省略号 */
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+.articleinfo{
+  width: 370rpx;
+  height: 200rpx;
+  padding-left: 20rpx;
+
+  
+}
+.article-operation{
+  width: 100rpx;
+  height: 200rpx;
+  padding-left: 60rpx;
+}
+.edit{
+  height:40% important;
+  margin-right: 5rpx;
+  margin-left: 15rpx;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  padding: 5rpx;
+  margin: 5rpx;
+  color: #1457d4;
+  /* background-color: rgb(67, 196, 8); */
+}
+.delete{
+  height:40% !important;
+  margin-left: 15rpx;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  padding: 5rpx;
+  margin: 5rpx;
+  /* border-radius: 10rpx; */
+  color: #1457d4;
+  /* background-color: rgb(67, 196, 8); */
+}
+
+/* 上传文章图片的那个容器 */
+.img-container{
+  width: 90%;
+  display: flex;
+  margin-left: 40rpx;
+  margin-top: 10rpx;
+  padding-bottom: 40rpx;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  background: rgb(255, 213, 124);
+}
+/* 显示的图片大小 */
+.display-img{
+  width: 80%;  
+  height: 400rpx;
+}
+/* 上传的简介标题之类的 */
+.article-messages{
+  display: flex;
+  flex-direction: row;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  /* background: #fff; */
+  padding-bottom: 30rpx;
+}
+/* 标题字体的设置 */
+.title{
+  font-size: 32rpx;
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  font-weight: bold;
+}
+/* 上间隔 */
+.top-20{
+  /* margin-top: 20rpx; */
+  width: 80%;
+}
+/*输入框*/
+.input-style1{
+  width: 90%;
+  height: 90rpx;
+  margin-left: 30rpx;
+  border-bottom: 1px solid #ccc;
+}
+
+.describe{
+  width: 80%;
+}
+.des{
+  font-size: 32rpx;
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  font-weight: bold;
+}
+.num{
+  font-size: 32rpx;
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  font-weight: bold;
+}
+.number{
+  /* margin-top: 20rpx; */
+  width: 80%;
+}
+
+.add{
+  font-size: 32rpx;
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  font-weight: bold;
+}
+.address{
+  /* margin-top: 20rpx; */
+  width: 80%;
+}
+.post-atical-messages{
+  width: 80%;
+  font-size: 38rpx;
+  height: 100rpx;
+  color: #fff;
+  background-color: rgb(67, 196, 8);
+  padding: 15rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}

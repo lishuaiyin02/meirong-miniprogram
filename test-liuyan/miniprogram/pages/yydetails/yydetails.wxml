@@ -1,0 +1,22 @@
+<view class="we_form_wrap">
+<!-- 
+  真实姓名：
+  手机号：
+  预约时间
+ -->
+ <!-- 顶部错误提示 -->
+ <mp-toptips msg="{{errorMsg}}" type="error" show="{{errorMsg}}" delay="1500"></mp-toptips>
+ <mp-form id="form" rules="{{rules}}" models="{{form}}"></mp-form>
+  <mp-cells>
+    <mp-cell class="form_item" prop="realname" title="真实姓名">
+      <input bindinput="formInputChange" value="{{form.realname}}" data-filed="realname" class="weui-input" placeholder="请填写真实姓名"/>
+    </mp-cell>
+    <mp-cell class="form_item" prop="phone" title="电话">
+      <input bindinput="formInputChange" value="{{form.phone}}" data-filed="phone" class="weui-input" placeholder="请填写手机号"/>
+    </mp-cell>
+    <mp-cell class="form_item_time" title="预约时间">
+      <view></view>
+      
+    </mp-cell>
+  </mp-cells>
+</view>

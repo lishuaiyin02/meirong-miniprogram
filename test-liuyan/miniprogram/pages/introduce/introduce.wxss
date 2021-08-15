@@ -1,0 +1,27 @@
+/* pages/introduce/introduce.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+}
+.imagesize{
+  display:flex;                    
+  justify-content: center;         
+ }
+ .imagesize image { 
+   width:400rpx;
+   height:400rpx;
+ }
+ .title{
+  text-align:center;
+  color: red;
+  font-size: 48rpx;
+}
+.jieshao{
+  margin: 30rpx;
+  font-size: 38rpx;
+  color: blue;
+  flex-direction: flex;
+  text-align:left;
+  line-height:30px;/*行间距*/
+}

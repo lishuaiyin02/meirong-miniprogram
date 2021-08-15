@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/yuyue/yuyue",
+    "pages/login/login",
+    "pages/index/index",
+    "pages/joinProcess/joinProcess",
+    "pages/introduce/introduce",
+    "pages/singup/signup",
+    "pages/my/my",
+    "pages/select/select",
+    "pages/write/write",
+    "pages/message/message",
+    "pages/article/article",
+    "pages/rawarticle/rawarticle",
+    "pages/articlenew/articlenew",
+    "pages/mycenter/mycenter",
+    "pages/lookmessage/lookmessage",
+    "pages/myartical/myartical",
+    "pages/userManagement/userManagement",
+    "pages/addUser/addUser",
+    "pages/yydetails/yydetails"
+  
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "xx美容院",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/yuyue.png",
+        "iconPath": "images/yuyue.png",
+        "pagePath": "pages/yuyue/yuyue",
+        "text": "预约"
+      },
+      {
+        "selectedIconPath": "images/home.png",
+        "iconPath": "images/home.png",
+        "pagePath": "pages/index/index",
+        "text": "商城"
+      },
+      {
+        "selectedIconPath": "images/my.png",
+        "iconPath": "images/my.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ],
+    "position": "bottom"
+  },
+  "useExtendedLib": {
+    "weui": true
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

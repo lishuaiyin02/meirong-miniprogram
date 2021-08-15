@@ -1,0 +1,157 @@
+/* pages/write/write.wxss */
+
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+}
+
+/* 头部contain */
+.title-container{
+  width: 100%;
+}
+
+/* 文章标题 */
+.title-style{
+  font-size: 38rpx;
+  color: #000;
+  font-family: '微软雅黑';
+  margin-left: 20rpx;
+  padding-top: 35rpx;
+  padding-bottom: 40rpx;
+}
+
+/* 留言文本域container */
+.text-message-container{
+  width: 100%;
+  height: 250rpx;
+  padding-left: 20rpx;
+  padding-top: 20rpx;
+  background-color: #fff;
+}
+
+/* 文本框style */
+.textarea-style{
+  height: 200rpx;
+  font-size: 34rpx;
+  font-family: '微软雅黑'；
+}
+
+/* 留言提交区域 */
+.submit-area{
+  width: 100%;
+}
+
+/* 按钮容器 */
+.btn-container{
+  padding-top: 40rpx;
+}
+
+/* 留言按钮 */
+.btn-message{
+  width: 600rpx;
+  height: 90rpx;
+  font-size: 34rpx;
+  color: #fff;
+  background-color: rgb(104, 192, 4);
+}
+
+/* “我的留言”文字 */
+.liuyan-text{
+  font-size: 32rpx;
+  color: #ccc;
+  padding-left: 20rpx;
+  padding-top: 40rpx;
+}
+
+/* 留言内容container */
+.message-content{
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+}
+
+/* 头像container */
+.head-container{
+  padding-left: 20rpx;
+  margin-top: 20rpx;
+}
+
+/* 用户头像style */
+.user-hear-style{
+  width: 100rpx;
+  height: 100rpx;
+}
+
+/* 用户名+留言内容 container */
+.username-message{
+  width: 500rpx;
+  padding-top: 14rpx;
+}
+
+/* 用户名style */
+.username{
+  font-size: 30rpx;
+  color: #ccc;
+  font-family: '微软雅黑';
+  padding-left: 20rpx;
+  padding-top: 20rpx;
+}
+
+/* 用户留言内容 */
+.message{
+  font-size: 32rpx;
+  color: #000;
+  font-family: '微软雅黑';
+  padding-left: 10px;
+  padding-top: 6rpx;
+}
+
+/* 删除留言 */
+.delete-message{
+  font-size: 30rpx;
+  padding-left: 20rpx;
+  padding-top: 8rpx;
+  font-family: '微软雅黑';
+  color: rgba(10, 113, 231, 0.685);
+}
+/*表情的图标设置*/
+
+/* .emoji-move-show {
+display: block;
+} */
+
+.emoji-move-hide {
+  display: none;/*控件消失并且位置不保留*/
+}
+.emoji-cell {
+  width: 9.09%;
+  height: 33px;
+  display: inline-block;
+}
+
+.emoji-cell image {
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.tui-accordion-content{
+  margin: 10px;
+  border: 1px solid #c8c7cc;
+  border-radius: 5px;
+  overflow: visible;
+}
+.tui-menu-list{
+  line-height: 80rpx;
+  color: #555;
+  font-size: 35rpx;
+  /* padding: 0 0rpx 0 10px; */
+  position: relative; /*元素框偏移某个距离。元素扔保持其未定位前的形状，它原来所占的空间仍保留*/
+}
+
+
+
+
+

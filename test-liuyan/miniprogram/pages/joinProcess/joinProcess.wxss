@@ -1,0 +1,52 @@
+/* pages/joinProcess/joinProcess.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+}
+.title{
+  text-align:center;
+  color: red;
+  font-size: 48rpx;
+}
+.jieshao{
+  margin: 30rpx;
+  font-size: 38rpx;
+  color: blue;
+  flex-direction: flex;
+  text-align:left;
+  line-height:30px;/*行间距*/
+}
+
+.imagesize{
+  display:flex;                    
+  justify-content: center;         
+ }
+ .imagesize image { 
+   width:400rpx;
+   height:400rpx;
+ }
+
+.signup{
+  margin-top: 30rpx;
+  width: 600rpx;
+  height: 90rpx;
+  font-size: 34rpx;
+  color: #fff;
+  background-color: rgb(104, 192, 4);
+}
+.control-password{
+  display: flex;
+}
+.reply-input{
+  width: 500rpx;
+  height: 60rpx;
+  font-size: 32rpx;
+  color: #000;
+  margin-top: 20rpx;
+  border: #ccc solid 2rpx;
+}
+.reply-content{
+  font-size: 30rpx;
+  color: rgb(243, 6, 6);
+}

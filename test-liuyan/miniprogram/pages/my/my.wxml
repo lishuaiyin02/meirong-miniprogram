@@ -1,0 +1,30 @@
+<!--pages/my/my.wxml-->
+	<view class='center-space'></view>
+	<view class='userinfo' bindtap="bindViewTap">
+		<image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+		<text class="userinfo-nickname">用户名</text>
+		<text class="zhuxiao">注销</text>
+
+	</view>
+
+	<view class='space'></view>
+	<view class="houtai" bindtap="showModal"> 基本信息</view>
+	<view class='center-space'></view>
+	<view class="houtai" bindtap="join"> 我的预约</view>
+	<view class='center-space'></view>
+	<view class="houtai" bindtap="introduce"> 我的订单</view>
+  <view class='center-space'></view>
+	<view class="houtai" bindtap="getopenID"> 常见问题</view>
+	<!-- <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo"> -->
+	<button class='bottom' open-type="contact" bindtap="autoreply">联系我 </button>
+
+
+<view>
+	<modal title="后台登录" style='color: #000;font-size: 32rpx;' hidden="{{modalHidden}}" confirm-text="确定" cancel-text="取消" bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">
+		<view class='reply-content'>只有管理员才能进行登录，您的ip地址已记录。</view>
+		<view class="control-password">
+			<input type="{{show}}" bindinput='getInputContent' class='reply-input' placeholder='请输入密码' value='{{inputContent}}' placeholder-style='font-size: 32rpx;'></input>
+			<image class='showImg' bindtap='showPassword' src="{{isPassword ? '../../images/close.png' : '../../images/open.png' }}"></image>
+		</view>
+	</modal>
+</view>

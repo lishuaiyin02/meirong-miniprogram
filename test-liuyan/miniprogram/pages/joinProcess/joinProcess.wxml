@@ -1,0 +1,21 @@
+<!--pages/joinProcess/joinProcess.wxml-->
+<view class="title">
+	<text >关于申请加入的流程如下</text>
+</view>
+
+<view class="jieshao">1.首先从公众号《我们大家一起学》中获得对应的唯一编号g_id以及阅读相关的注册流程，二维码如下所示：</view>
+<view class='imagesize'>
+	<image src='../../images/togetherStudy.jpg' mode="widthFix">
+	</image>
+</view>
+<view class="jieshao">2.如您已获得相应的g_id号，并且已经阅读完相关注册流程，请点击以下按钮进行注册</view>
+<button class="signup" bindtap="signup">点击注册</button>
+
+<view>
+	<modal title="注册确认" style='color: #000;font-size: 32rpx;' hidden="{{modalHidden}}" confirm-text="确定" cancel-text="取消" bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">
+		<view class='reply-content'>只有通过管理员审核后才能进入，如有需要请通过公众号索要g_id号</view>
+		<view class="control-password">
+			<input type="text" bindinput='getInputContent' class='reply-input' placeholder='请输入您的g_id号' value='{{inputContent}}' placeholder-style='font-size: 32rpx;'></input>
+		</view>
+	</modal>
+</view>

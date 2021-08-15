@@ -1,0 +1,32 @@
+.weui-tab_content {
+  padding-top: 100rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+.nav {
+  height: 86rpx;
+  text-align: center;
+  color: #A8A8A8;
+  font-size: 4vw;
+  background-color: #FFF;
+  border-bottom: 1rpx solid #DFDFDF;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  line-height: 80rpx;
+  white-space: nowrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+.nav-item {
+  width: 22%;
+  display: inline-block;
+  text-align: center;
+}
+.nav-item.active {
+  transition: all 0.3s;
+  border-bottom: 10rpx solid #478ff3;
+  color: #478ff3;
+}

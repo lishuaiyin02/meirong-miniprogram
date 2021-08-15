@@ -1,0 +1,21 @@
+<!--pages/addUser/addUser.wxml-->
+<view class="tui-menu-list tui-clear">
+	<view class='article-messages'>
+		<view class='num'><label>备注:  </label></view>
+		<view class='number'>
+			<input class='input-style1' placeholder="请设置备注(最长20个字符)" placeholder-style='color:#ccc; font-size: 32rpx;' name="number" bindinput='numberInput1' value='{{inputbz}}' maxlength='100' />
+		</view>
+	</view>
+</view>
+
+<view class="tui-menu-list tui-clear">
+	<view class='article-messages'>
+		<view class='num'><label>OPENID:</label></view>
+		<view class='number'>
+			<input  class='input-style1' placeholder="请输入管理员的OPENID" placeholder-style='color:#ccc; font-size: 32rpx;' name="number" bindinput='numberInput2' value='{{inputid}}' maxlength='100' />
+		</view>
+	</view>
+</view>
+
+<button wx:if='{{isSubmit}}' form-type="submit" class='post-atical-messages' bindtap='submit'>提交信息</button>
+  	<button wx:if='{{!isSubmit}}' form-type="submit" class='post-atical-messages' bindtap='submit'>确认修改</button>

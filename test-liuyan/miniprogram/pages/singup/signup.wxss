@@ -1,0 +1,70 @@
+/* pages/singup/signup.wxss */
+.tui-menu-list{
+  line-height: 80rpx;
+  color: #555;
+  font-size: 35rpx;
+  /* padding: 0 0rpx 0 10px; */
+  position: relative; /*元素框偏移某个距离。元素扔保持其未定位前的形状，它原来所占的空间仍保留*/
+}
+/* 清除浮动 */
+.tui-clear:after{
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+}
+/* 上传文章图片的那个容器 */
+.img-container{
+  width: 90%;
+  display: flex;
+  margin-left: 40rpx;
+  margin-top: 10rpx;
+  padding-bottom: 40rpx;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  background: rgb(255, 213, 124);
+}
+/* 显示的图片大小 */
+.display-img{
+  width: 80%;  
+  height: 400rpx;
+}
+.article-messages{
+  display: flex;
+  flex-direction: row;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  /* background: #fff; */
+  padding-bottom: 30rpx;
+}
+
+.num{
+  font-size: 32rpx;
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+
+  font-weight: bold;
+}
+.number{
+  /* margin-top: 20rpx; */
+  width: 80%;
+  
+}
+.input-style1{
+  width: 85%;
+  height: 85rpx;
+  margin-left: 50rpx;
+  border-bottom: 1px solid #ccc;
+}
+.post-atical-messages{
+  width: 80%;
+  font-size: 38rpx;
+  height: 100rpx;
+  color: #fff;
+  background-color: rgb(67, 196, 8);
+  padding: 15rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}

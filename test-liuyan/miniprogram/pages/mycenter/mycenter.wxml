@@ -1,0 +1,100 @@
+<!--pages/mycenter/mycenter.wxml-->
+<view class='gong-content'>
+	<view>
+		<image class='gong-img' src="{{headpath}}"></image>
+	</view>
+	<view class='gong-message'>
+		<view class='gong-name'>{{name}}</view>
+		<view class='gong-describe'>{{describe}}</view>
+	</view>
+</view>
+
+<view class="remind-copy">长按已发表文章,复制文章路径</view>
+
+<view class="tui-accordion-content">
+	<view class="tui-menu-list ">
+		<view class="form-bg" bindtap="showForm" data-param="1">
+			<text style="margin-left:20rpx">发布新文章</text>
+		</view>
+		<view class="tui-accordion-form {{isShowForm ? 'tui-show':'tui-hide'}} ">
+			<view class="tui-menu-list tui-clear">
+				<view class="img-container" bindtap="chooseimage">
+					点击该区域上传文章图片
+					<image class="display-img" src="{{tempFilePath}}"></image>
+				</view>
+			</view>
+
+			<view class="tui-menu-list tui-clear">
+				<view class="article-messages">
+					<view class="title"><label>标题:</label></view>
+					<view class="top-20">
+						<input class="input-style1" placeholder="请输入文章标题" placeholder-style='color:#ccc;font-size:32rpx' maxlength="30" name='title' value="{{inputTitle}}" bindinput="titleInput" />
+					</view>
+				</view>
+			</view>
+			
+			<view class="tui-menu-list tui-clear">
+				<view class='article-messages'>
+					<view class='des'><label>简介:</label></view>
+					<view class='describe'>
+						<input class='input-style1' placeholder="请输入文章简介" placeholder-style='color:#ccc; font-size: 32rpx;' name="describe" bindinput='describeInput' value='{{inputDesc}}' maxlength='50' />
+					</view>
+				</view>
+			</view>
+			<view class="tui-menu-list tui-clear">
+				<view class='article-messages'>
+					<view class='num'><label>编号:</label></view>
+					<view class='number'>
+						<input class='input-style1' placeholder="请输入文章编号" placeholder-style='color:#ccc; font-size: 32rpx;' name="number" bindinput='numberInput' value='{{inputNum}}' maxlength='10' />
+					</view>
+				</view>
+			</view>
+
+			<view class="tui-menu-list tui-clear">
+				<view class='article-messages'>
+					<view class='add'><label>网址:</label></view>
+					<view class='address'>
+						<input class='input-style1' placeholder="请输入文章网址" placeholder-style='color:#ccc; font-size: 32rpx;' name="address" bindinput='addressInput' value='{{inputAddres}}' maxlength='500' />
+					</view>
+				</view>
+			</view>
+
+			<view class="tui-menu-list tui-clear" style="text-align:center;padding-top:20rpx;">
+				<view>
+					<form name='pushMsgF' report-submit bindsubmit='orderSign'>
+						<button wx:if='{{isSubmit}}' form-type="submit" class='post-atical-messages' bindtap='submitdata'>提交文章</button>
+            <button wx:if='{{!isSubmit}}' form-type="submit" class='post-atical-messages' bindtap='updatedata'>更新文章</button>
+					</form>
+				</view>
+			</view>
+
+
+
+		</view>
+	</view>
+
+	<view class='line'></view>
+</view>
+
+<!-- 以下显示的是已经发表的文章 -->
+<block wx:for="{{post_key}}" wx:for-item="item">
+	<view class='artical-container' bindlongtap="copy" data-index="{{index}}">
+		<!-- 图片 -->
+		<view>
+			<image class="aticle-img" src='{{item.imageTitle}}'></image>
+		</view>
+
+		<!-- 文章信息 -->
+		<view class="articleinfo">
+			<view class="article-title">{{item.title}}</view>
+			<view class="article-describe">{{item.describe}}</view>
+		</view>
+
+		<!-- 编辑和删除 -->
+		<view class='article-operation'>
+			<button class='edit' style="width:90%;;" bindtap="edit" data-index="{{index}}">编辑</button>
+			<button class='delete' style="width:90%;" bindtap="delete1" data-index="{{index}}">删除</button>
+		</view>
+		<text selectable="true"></text>
+	</view>
+</block>

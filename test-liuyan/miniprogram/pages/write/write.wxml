@@ -1,0 +1,61 @@
+<!--写留言界面-->
+
+<!-- 文章标题 -->
+<view class='title-container'>
+  <view class='title-style'>{{title}}</view>
+</view>
+<!-- 留言文本域 -->
+<view class='text-message-container'>
+  <textarea class='textarea-style' bindblur="textAreaBlur" bindinput="getMessage" placeholder="留言将由作者筛选后，对所有人可见。" placeholder-style='font-size: 32rpx; background-color: #ccc;' maxlength='500' value='{{messagesnull}}' auto-focus='true'>
+  </textarea>
+  <view class="clear">
+    <text style="color: #ccc; font-size: 14px; float: right; margin-right: 5%;">{{current}} /500 </text>
+  </view>
+  <view class="emoji0" catchtap="emojiShowHide">
+    <image class="em0ji" src='../../images/emoji.png' style='width:40rpx;height:40rpx;margin-left: 1%'></image>
+  </view>
+</view>
+<view class="  {{isShow ? '' : 'emoji-move-hide'}} ">
+  <scroll-view scroll-y="true" bindscroll="emojiScroll" style="height:200px">
+    <block wx:for="{{emojis}}" wx:for-item="e" wx:key="index">
+      <view class="emoji-cell" catchtap="emojiChoose" data-id="{{index}}" data-emoji="{{e.char}}" data-oxf="{{e.emoji}}">{{e.char}}
+      </view>
+    </block>
+  </scroll-view>
+
+</view>
+
+
+
+<!-- 留言提交区域 -->
+<view class='submit-area'>
+  <!-- 留言按钮 -->
+  <view class='btn-container'>
+    <form class="pushMsgF" report-submit bindsubmit="orderSign">
+      <button form-type="submit" class="btn-message" bindtap="btnmessage">留言</button>
+    </form>
+  </view>
+
+  <!-- 提交信息 -->
+  <block wx:if="{{condition}}">
+    <view class="submit-message">
+      <view class="liuyan-text">我的留言</view>
+      <block wx:for="{{message}}" wx:key="key" wx:for-item="item" wx:for-index="index">
+        <!-- 提交留言相关信息 -->
+        <view class="message-content">
+          <!-- 用户头像 -->
+          <view class="head-container">
+            <image class="user-hear-style" src='{{avatarUrl}}'></image>
+          </view>
+          <!-- 用户名与留言内容 -->
+          <view class="username-message">
+            <view class='username'>{{nickName}}</view>
+            <view class="message">{{item}}</view>
+            <view class='delete-message' data-index="{{index}}" bindtap="deleter_message">删除</view>
+          </view>
+        </view>
+      </block>
+
+    </view>
+  </block>
+</view>

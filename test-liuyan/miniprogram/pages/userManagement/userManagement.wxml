@@ -1,0 +1,19 @@
+<!--pages/userManagement/userManagement.wxml-->
+<view class="button1">
+  <button class="btn"  bindtap="adduser">添加</button>
+</view>
+<block wx:for="{{bzs}}" wx:for-item="item"  >
+	<view class='artical-container' bindlongtap="copy" data-index="{{index}}">
+	<!-- 管理员信息 -->
+		<view class="articleinfo">
+			<view class="article-title">{{item}}</view>
+			<view class="article-describe">{{openids[index]}}</view>
+		</view>
+
+		<!-- 编辑和删除 -->
+		<view class='article-operation'>
+			<button class='edit'  bindtap="edit" data-index="{{index}}">编辑</button>
+			<button class='delete'  bindtap="delete1" data-index="{{index}}">删除</button>
+		</view>
+	</view>	
+</block>

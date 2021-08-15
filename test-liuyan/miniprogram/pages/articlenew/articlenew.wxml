@@ -1,0 +1,25 @@
+<!--pages/artical/artical.wxml-->
+<!-- 文章列表 -->
+<block wx:for="{{post_key}}"  wx:for-item="item">
+  <view bindtap="to_message_list" data-index="{{index}}">
+    <!-- 文章发表时间 -->
+    <view class="white-space"></view>
+    <view class="artical-time">{{item.update_time}}</view>
+    <!-- 文章图片、标题、描述 -->
+    <view class='artical-container'>
+      <!-- 文章图片直接读数据库 -->
+      <view class='artical-img-container'>
+        <!-- <image class='artical-img' src="{{item.imageTitle}}"></image> -->
+        <!-- 直接获取 -->
+        <image class='artical-img' src="{{item.content.news_item[0].thumb_url}}"></image> 
+      </view>
+      <!-- 文章标题 -->
+      <view class='artical-title'>{{item.content.news_item[0].title}}</view>
+      <!-- <view class='artical-title'>{{item.title}}</view> -->
+      <!-- 文章描述直接读数据库版本 -->
+      <!-- <view class='artical-describe'>{{item.describe}}</view> -->
+      <!-- 文章描述直接获取结果 -->
+      <view class='artical-describe'>{{item.content.news_item[0].digest}}</view>
+    </view>
+  </view>
+</block>

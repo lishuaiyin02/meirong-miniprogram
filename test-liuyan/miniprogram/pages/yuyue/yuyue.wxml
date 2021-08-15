@@ -1,0 +1,66 @@
+<view class="page">
+	<!-- tab导航栏 -->
+	<scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
+		<block wx:for="{{navData}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
+			<view class="nav-item {{currentTab == idx ?'active':''}}" data-current="{{idx}}" bindtap="switchNav">
+				<text>{{navItem}}</text>
+			</view>
+		</block>
+	</scroll-view>
+	<!-- 页面内容 -->
+	<view class="weui-tab__panel">
+		<!-- 第1个页面 -->
+		<view class="weui-tab_content" hidden="{{currentTab != 0}}">
+			<mp-cells title="栏目内容">
+      <view>
+            <mp-cell link url="../../pages/yydetails/yydetails?content=接眉毛：90分钟"  hover value="接眉毛：90分钟">
+            <image slot="title" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </mp-cell>
+            <picker class='alarm_picker' mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+            <view class="picker">
+            时间选择：{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}
+            </view>
+            </picker>
+          </view>
+          <view>
+            <mp-cell  value="补睫毛：60分钟">
+                <image slot="title" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </mp-cell>
+            <picker class='alarm_picker' mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+            <view class="picker">
+            时间选择：{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}
+            </view>
+            </picker>
+          </view>
+        </mp-cells>
+		</view>
+		<!-- 第2个页面 -->
+		<view class="weui-tab_content" hidden="{{currentTab != 1}}">
+			2
+		</view>
+		<!-- 第3个页面 -->
+		<view class="weui-tab_content" hidden="{{currentTab != 2}}">
+			3
+		</view>
+		<!-- 第4个页面 -->
+		<view class="weui-tab_content" hidden="{{currentTab != 3}}">
+			4
+		</view>
+		<!-- 第5个页面 -->
+		<view class="weui-tab_content" hidden="{{currentTab != 4}}">
+			5
+		</view>
+		<!-- 第6个页面 -->
+		<view class="weui-tab_content" hidden="{{currentTab != 5}}">
+			6
+		</view>
+		<!-- 第7个页面 -->
+		<view class="weui-tab_content" hidden="{{currentTab != 6}}">
+			7
+		</view>
+		<!-- 第8个页面 -->
+		<view class="weui-tab_content" hidden="{{currentTab != 7}}">
+			8
+		</view>
+	</view>
+</view>

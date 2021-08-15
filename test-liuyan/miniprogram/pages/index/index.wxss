@@ -1,0 +1,235 @@
+/**index.wxss**/
+@import "/wxSearch/wxSearch.wxss";
+
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #F5F5F5;
+}
+
+.userinfo {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  height: 180rpx;
+  line-height: 180rpx;
+  background-color: #fff;
+  /* align-items: center; */
+}
+/*搜索框*/
+.weui-search-bar {
+  position: relative;
+  padding: 8px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #EFEFF4;
+  border-top: 1rpx solid #D7D6DC;
+  border-bottom: 1rpx solid #D7D6DC;
+}
+/*放大镜设置*/
+.weui-icon-search_in-box {
+  position: absolute;
+  left: 10px;
+  top: 4px;
+}
+.weui-search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+          flex: auto;
+  border-radius: 5px;
+  background: #FFFFFF;
+  border: 1rpx solid #E6E6EA;
+}
+.weui-search-bar__box {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.weui-search-bar__input {
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+}
+.weui-search-bar__cancel-btn {
+  margin-left: 10px;
+  line-height: 28px;
+  color: #09BB07;
+  white-space: nowrap;
+}
+
+/* 提醒复制文字 */
+.remind-copy{
+  height: 0.2rpx;
+  text-align: center;
+  line-height: 0.2rpx;
+  padding-top: 30rpx;
+  padding-bottom: 0.1rpx;
+  font-size:30rpx;
+  color: #ccc;
+}
+
+/* 复制 ID */
+.copy-nickName{
+  width: 100%;
+  font-size: 32rpx;
+  color: #ccc;
+  margin-left: 350rpx;
+}
+
+/* 悬浮图标样式 */
+/* .post {
+  float:left;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;  
+  border: 0 solid #ffffff;
+  border-radius: 500px;
+  box-shadow: 4px 1px 1px #cccccc;
+} */
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 30rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.center-space{
+  height: 20rpx;
+  background: #F5F5F5;
+}
+
+.center-space-gong{
+  height: 10rpx;
+  background: #F5F5F5;
+}
+
+/* 公众号所有信息 */
+.gong-content{
+  height: 160rpx;
+  display: flex;
+  flex-direction: row;
+  padding-left: 10rpx;
+  padding-top: 10rpx;
+  vertical-align: middle;
+  background-color: #fff;
+}
+
+/* 公众号头像 */
+.gong-img{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-top: 14rpx;
+}
+
+/* 公众号文本信息 */
+.gong-message{
+  padding-left: 40rpx;
+  padding-top: 24rpx;
+}
+
+/* 公众号名称 */
+.gong-name{
+  font-size: 34rpx;
+  font-family: '微软雅黑'；
+}
+
+/* 公众号描述 */
+.gong-describe{
+  font-size: 28rpx;
+  margin-top: 10rpx;
+  width: 500rpx;
+  /* 超出文本隐藏 */
+  overflow:hidden;
+  /* 并显示省略号 */
+  text-overflow: ellipsis;
+  /* 不换行 */
+  white-space:nowrap;
+  color: rgb(179, 177, 177);
+  font-family: '微软雅黑'；
+}
+
+/* 背景 */
+.background-color{
+  width: 100%;
+  height: 800rpx;
+  line-height: 800rpx;
+  display: flex;
+  position: fixed;  
+  align-items: center;
+  justify-content: center;  
+  background-color: #F5F5F5;
+}
+
+/* admin */
+.admin{
+  height: 50rpx;
+  font-size: 32rpx;
+  color: rgb(5, 1, 252);
+}
+
+.reply-input{
+  width: 500rpx;
+  height: 60rpx;
+  font-size: 32rpx;
+  color: #000;
+  margin-top: 20rpx;
+  border: #ccc solid 2rpx;
+}
+
+
+.header {
+    margin: 90rpx 0 90rpx 50rpx;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    width: 650rpx;
+    height: 300rpx;
+    line-height: 450rpx;
+}
+ 
+.header image {
+    width: 200rpx;
+    height: 200rpx;
+}
+ 
+.content {
+    margin-left: 50rpx;
+    margin-bottom: 90rpx;
+}
+.zhushi{
+  margin:10rpx ;
+  font-family: '微软雅黑';
+  font-size: 34rpx;
+  color: rgb(5, 1, 252);
+
+}
+.content text {
+    display: block;
+    color: #9d9d9d;
+    margin-top: 40rpx;
+}
+ 
+.bottom {
+  width: 50%;
+  border-radius: 80rpx;
+  margin-top: 40rpx;
+  font-size: 35rpx;
+  color: #fff;
+  background-color: rgb(52, 214, 3);
+}
+.em0ji{
+  margin-left:5rpx ;
+  width:60rpx;
+  height: 60rpx;
+}

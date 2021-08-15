@@ -1,0 +1,11 @@
+<!--pages/introduce/introduce.wxml-->
+<view class="title">
+	<text >使用说明如下</text>
+</view>
+
+<view class="jieshao">1.首先关注公众号《我们大家一起学》，二维码如下所示：</view>
+<view class='imagesize'>
+	<image src='../../images/togetherStudy.jpg' mode="widthFix">
+	</image>
+</view>
+<view class="jieshao">2.在公众号后台回复“小程序使用说明”，即可获得对应的使用流程</view>

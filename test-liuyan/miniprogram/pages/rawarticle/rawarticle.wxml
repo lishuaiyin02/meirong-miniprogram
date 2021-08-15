@@ -1,0 +1,2 @@
+<!--pages/rawarticle/rawarticle.wxml-->
+<web-view src="{{myurl}}"></web-view>

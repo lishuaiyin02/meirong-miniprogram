@@ -1,0 +1,46 @@
+<!--pages/singup/signup.wxml-->
+<view class="tui-menu-list tui-clear">
+	<view class="img-container" bindtap="chooseimage">
+		点击该区域上传公众号头像
+		<image class="display-img" src="{{tempFilePath}}"></image>
+	</view>
+</view>
+
+<view class="tui-menu-list tui-clear">
+	<view class="article-messages">
+		<view class="num"><label>公众号: </label></view>
+		<view class="number">
+			<input class="input-style1" placeholder="请输入公众号昵称" placeholder-style='color:#ccc;font-size:32rpx' maxlength="30" name='title' value="{{inputTitle}}" bindinput="titleInput" />
+		</view>
+	</view>
+</view>
+
+<view class="tui-menu-list tui-clear">
+	<view class='article-messages'>
+		<view class='num'><label>简介:  </label></view>
+		<view class='number'>
+			<input class='input-style1' placeholder="请输入公众号简介" placeholder-style='color:#ccc; font-size: 32rpx;' name="describe" bindinput='describeInput' value='{{inputDesc}}' maxlength='50' />
+		</view>
+	</view>
+</view>
+
+<view class="tui-menu-list tui-clear">
+	<view class='article-messages'>
+		<view class='num'><label>密码:  </label></view>
+		<view class='number'>
+			<input type="password" class='input-style1' placeholder="请设置密码(最长20个字符)" placeholder-style='color:#ccc; font-size: 32rpx;' name="number" bindinput='numberInput1' value='{{inputNum}}' maxlength='20' />
+		</view>
+	</view>
+</view>
+
+<view class="tui-menu-list tui-clear">
+	<view class='article-messages'>
+		<view class='num'><label>密码:</label></view>
+		<view class='number'>
+			<input type="password" class='input-style1' placeholder="请再次输入密码" placeholder-style='color:#ccc; font-size: 32rpx;' name="number" bindinput='numberInput2' value='{{inputNum}}' maxlength='20' />
+		</view>
+	</view>
+</view>
+
+	<button wx:if='{{isSubmit}}' form-type="submit" class='post-atical-messages' bindtap='submit'>提交信息</button>
+  	<button wx:if='{{!isSubmit}}' form-type="submit" class='post-atical-messages' bindtap='submit'>确认修改</button>
