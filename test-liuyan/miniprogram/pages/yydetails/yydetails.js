@@ -1,5 +1,6 @@
 // pages/yydetails/yydetails.js
 var dateTimePicker = require('../../utils/dateTimePicker.js');
+const app = getApp()
 Page({
 
   /**
@@ -7,9 +8,12 @@ Page({
    */
   data: {
     form: {
+      content:'',
       realname: '',
-      phone: ''
- 
+      phone: '',
+      dateTime: null,
+      dateTimeArray: null
+
     },
     errorMsg: '', // 验证表单显示错误信息
     rules: [
@@ -23,10 +27,10 @@ Page({
       },
     ],
 
-    date: '2018-10-01',
+    date: '2021-10-01',
     time: '12:00',
-    dateTimeArray: null,
-    dateTime: null,
+    // dateTimeArray: null,
+    // dateTime: null,
     dateTimeArray1: null,
     dateTime1: null,
     startYear: 2000,
@@ -47,7 +51,7 @@ changeTime(e) {
 },
 changeDateTime(e) {
   this.setData({
-    dateTime: e.detail.value
+    "form.dateTime": e.detail.value
   });
 },
 changeDateTime1(e) {
@@ -56,15 +60,15 @@ changeDateTime1(e) {
   });
 },
 changeDateTimeColumn(e) {
-  var arr = this.data.dateTime,
-    dateArr = this.data.dateTimeArray;
+  var arr = this.data.form.dateTime,
+    dateArr = this.data.form.dateTimeArray;
 
   arr[e.detail.column] = e.detail.value;
   dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
 
   this.setData({
-    dateTimeArray: dateArr,
-    dateTime: arr
+    "form.dateTimeArray": dateArr,
+    "form.dateTime": arr
   });
 },
 changeDateTimeColumn1(e) {
@@ -84,8 +88,8 @@ changeDateTimeColumn1(e) {
    */
   onLoad: function (options) {
     var me = this;
-    // var content = options.content;
-    // console.log(content)
+    var content = options.content;
+    console.log(content)
     var obj = dateTimePicker.dateTimePicker(me.data.startYear, me.data.endYear);
     var obj1 = dateTimePicker.dateTimePicker(me.data.startYear, me.data.endYear);
    // 精确到分的处理，将数组的秒去掉
@@ -93,8 +97,9 @@ changeDateTimeColumn1(e) {
     var lastTime = obj1.dateTime.pop();
     
     me.setData({
-      dateTime: obj.dateTime,
-      dateTimeArray: obj.dateTimeArray,
+      'form.content':content,
+      'form.dateTime': obj.dateTime,
+      'form.dateTimeArray': obj.dateTimeArray,
       dateTimeArray1: obj1.dateTimeArray,
       dateTime1: obj1.dateTime
      });
@@ -109,6 +114,88 @@ changeDateTimeColumn1(e) {
     })
   },
 
+  //文本框输入触发的函数
+  formInputChange(e) {
+    const filed = e.currentTarget.dataset.filed
+    this.setData({
+      [`form.${filed}`]: e.detail.value
+    })
+  },
+  // 点击确定按钮
+  weSubmitForm:function(e){
+    console.log(this.data.form)
+    const {content, realname, phone, dateTime, dateTimeArray} = this.data.form
+    console.log(content, realname,phone, dateTime,dateTimeArray)
+    this.selectComponent('#form').validate((valid,errors) => {
+      if(!valid){
+        const firstError = Object.keys(errors)
+        if(firstError.length){
+          this.setData({
+            errorMsg:errors[firstError[0]].message
+          })
+        }
+      }else{
+          console.log('jinlai',app.getGlobalUserInfo().id)
+          var serverUrl = app.serverUrl;
+          wx.showLoading({
+            title: '请等待...',
+          });
+          wx.request({
+            url: serverUrl + 'order',
+            method: "POST",
+            data: {
+              user_id:app.getGlobalUserInfo().id,
+              form: this.data.form
+            },
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            success:function(res){
+              console.log(res)
+              if (res.statusCode == 200 && res.data.status == "200"){
+                wx.showToast({
+                  title: res.data.msg,
+                  icon: 'success',
+                  duration: 2000
+                })
+              }else{
+                wx.showToast({
+                  title: res.data.msg,
+                  icon:"none",
+                  duration: 2000
+                })
+              }
+              // if (res.statusCode == 401){
+              //   wx.redirectTo({
+              //     url: '../../pages/login/login',
+              //   })
+              // }
+            },
+            fail:function(){
+              wx.hideLoading();
+              wx.showToast({
+                title: '请求出错',
+                icon:'none',
+                duration: 3000
+              })
+            }
+          })
+          wx.showToast({
+            title: '提交成功',
+          })
+          wx.navigateBack({
+            delta: 1,
+          })
+        
+      }
+    })
+  },
+  // 点击重置按钮
+  restForm() {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

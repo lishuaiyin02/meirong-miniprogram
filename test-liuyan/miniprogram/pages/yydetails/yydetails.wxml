@@ -7,26 +7,34 @@
  <!-- 顶部错误提示 -->
  <mp-toptips msg="{{errorMsg}}" type="error" show="{{errorMsg}}" delay="1500"></mp-toptips>
  <mp-form id="form" rules="{{rules}}" models="{{form}}">
-  <mp-cells>
-    <mp-cell class="form_item" prop="realname" title="真实姓名">
-      <input bindinput="formInputChange" value="{{form.realname}}" data-filed="realname" class="weui-input" placeholder="请填写真实姓名"/>
-    </mp-cell>
-    <mp-cell class="form_item" prop="phone" title="电话">
-      <input bindinput="formInputChange" value="{{form.phone}}" data-filed="phone" class="weui-input" placeholder="请填写手机号"/>
-    </mp-cell>
-    <mp-cell class="form_item_time" title="预约时间">
-      <view class="yytime time_select">
-        <view class="picker_wrap" > 
-          <picker class='alarm_picker' mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime">
-          <view class="picker">
-            {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}
-            </view>
-          </picker>
+    <mp-cells>
+      <mp-cell class="form_item" prop="content" title="预约内容">
+        <input disabled="true" bindinput="formInputChange" value="{{form.content}}" data-filed="content" class="weui-input"/>
+      </mp-cell>
+      <mp-cell class="form_item" prop="realname" title="真实姓名">
+        <input bindinput="formInputChange" value="{{form.realname}}" data-filed="realname" class="weui-input" placeholder="请填写真实姓名"/>
+      </mp-cell>
+      <mp-cell class="form_item" prop="phone" title="电话">
+        <input bindinput="formInputChange" value="{{form.phone}}" data-filed="phone" class="weui-input" placeholder="请填写手机号"/>
+      </mp-cell>
+      <mp-cell class="form_item_time" title="预约时间">
+        <view class="yytime time_select">
+          <view class="picker_wrap" > 
+            <picker class='alarm_picker' mode="multiSelector" value="{{form.dateTime}}" bindchange="changeDateTime"
+            bindcolumnchange="changeDateTimeColumn" range="{{form.dateTimeArray}}">
+            <view class="picker">
+              {{form.dateTimeArray[0][form.dateTime[0]]}}-{{form.dateTimeArray[1][form.dateTime[1]]}}-{{form.dateTimeArray[2][form.dateTime[2]]}}
+              {{form.dateTimeArray[3][form.dateTime[3]]}}:{{form.dateTimeArray[4][form.dateTime[4]]}}:{{form.dateTimeArray[5][form.dateTime[5]]}}
+              </view>
+            </picker>
+          </view>
         </view>
-      
-      </view>
-      
-    </mp-cell>
-  </mp-cells>
+        
+      </mp-cell>
+    </mp-cells>
+    <view class="submit_btn_wrap">
+      <button class="weui-btn" type="primary" bindtap="weSubmitForm">确定</button>
+      <button class="weui-btn" type="warn" bindtap="restForm" >取消</button>
+    </view>
   </mp-form>
 </view>

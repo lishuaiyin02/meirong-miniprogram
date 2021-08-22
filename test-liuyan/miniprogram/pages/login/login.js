@@ -37,7 +37,7 @@ Page({
       });
       // 调用后端
       wx.request({
-        url: serverUrl + '/login',
+        url: serverUrl + 'login',
         method: "POST",
         data: {
           username: username,

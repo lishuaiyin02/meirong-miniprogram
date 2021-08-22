@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="app" uuid="6e319d38-adb2-4b0a-93a7-d05e14943102">
+    <data-source source="LOCAL" name="app [2]" uuid="5228ce14-67cc-48a4-8acf-c94742659244">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:D:\project\meirong\app.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:D:\project\meirong-miniprogram\meirong\app.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>

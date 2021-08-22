@@ -16,21 +16,17 @@
             <mp-cell link url="../../pages/yydetails/yydetails?content=接眉毛：90分钟"  hover value="接眉毛：90分钟">
             <image slot="title" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
             </mp-cell>
-            <picker class='alarm_picker' mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
-            <view class="picker">
-            时间选择：{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}
-            </view>
-            </picker>
+            
           </view>
           <view>
-            <mp-cell  value="补睫毛：60分钟">
+            <mp-cell link url="../../pages/yydetails/yydetails?content=补睫毛：60分钟"  hover value="补睫毛：60分钟">
                 <image slot="title" src="{{icon}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
             </mp-cell>
-            <picker class='alarm_picker' mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+            <!-- <picker class='alarm_picker' mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
             <view class="picker">
             时间选择：{{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}
             </view>
-            </picker>
+            </picker> -->
           </view>
         </mp-cells>
 		</view>

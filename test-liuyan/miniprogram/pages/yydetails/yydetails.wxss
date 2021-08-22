@@ -1,5 +1,11 @@
 page {
   background-color: #f9f9f9;
 }
+.submit_btn_wrap {
+  margin-top: 20rpx;
+  padding: 10px 20rpx;
+  width: 80%;
+}
+
 
 
