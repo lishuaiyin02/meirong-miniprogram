@@ -1,0 +1,52 @@
+<view class="page">
+	<!-- tab导航栏 -->
+	<scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
+		<block wx:for="{{navData}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
+			<view class="nav-item {{currentTab == idx ?'active':''}}" data-current="{{idx}}" bindtap="switchNav">
+				<text>{{navItem.second_column}}</text>
+			</view>
+		</block>
+	</scroll-view>
+	<!-- 页面内容 -->
+  <view class="weui-tab__panel">
+    <block wx:for="{{navData}}" wx:for-index="idx1" wx:for-item="navItem" wx:key="idx1">
+			<view class="weui-tab_content" hidden="{{currentTab != idx1}}">
+			  <view>
+          <image class="product-img" src="../../images/dsp.jpg" mode="widthFix"></image>
+        </view>
+        <mp-toptips msg="{{errorMsg}}" type="error" show="{{errorMsg}}" delay="1500"></mp-toptips>
+        <mp-form id="form" rules="{{rules}}" models="{{form}}">
+          <mp-cells>
+            <mp-cell class="form_item" prop="product" title="产品">
+              <picker bindchange="bindPickerProduct" value="{{index}}" range="{{navItem.contents}}">
+                <view class="picker">
+                  {{form.product}}
+                </view>
+              </picker>
+            </mp-cell>
+            <mp-cell class="form_item" prop="prices" title="单价">
+              <input bindinput="formInputChange" value="{{form.prices}}" data-filed="prices" class="weui-input" disabled="true"/>
+            </mp-cell>
+            <mp-cell class="form_item" prop="number" title="数量">
+              <view class="stepper">  
+                <!-- 减号 -->  
+                <text class="{{minusStatus}}" bindtap="bindMinus">-</text>  
+                <!-- 数值 -->  
+                <input type="number" bindinput="handleInput" bindchange="bindManual" value="{{form.num}}" />  
+                <!-- 加号 -->  
+                <text class="normal" bindtap="bindPlus">+</text>  
+              </view>  
+            </mp-cell>
+            <mp-cell class="form_item" prop="money" title="总价">
+              <input value="{{form.money}}"  class="weui-input" disabled="true"/>
+            </mp-cell>
+          </mp-cells>
+          <view class="submit_btn_wrap">
+            <button class="weui-btn" type="primary" bindtap="weSubmitForm">确定</button>
+            <button class="weui-btn" type="warn" bindtap="restForm" >取消</button>
+          </view>
+        </mp-form>
+		</view>
+		</block>
+  </view>
+</view>

@@ -49,12 +49,55 @@ def load_user(user_id):
     return User.query.filter_by(id=user_id, valid=True).first()
 
 
+#  我的预约
+class Appointment(db.Model):
+    __tablename__ = 'appointments'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', foreign_keys='Appointment.user_id', backref='appointment')
+    content = db.Column(db.String(255), doc='预约内容')
+    realname = db.Column(db.String(255), doc='预约人的真实姓名')
+    phone = db.Column(db.String(15), doc='预约人的电话号码')
+    datetime = db.Column(db.String(50), doc='预约时间')
+
+#  我的订单
 class Order(db.Model):
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = db.relationship('User', foreign_keys='Order.user_id', backref='orders')
-    content = db.Column(db.String(255), doc='预约内容')
-    realname = db.Column(db.String(255), doc='预约人的真实姓名')
-    phone = db.Column(db.String(15), doc='预约人的电话号码')
-    datetime = db.Column(db.String(50), doc='预约时间')
+    product = db.Column(db.String(255), doc='产品')
+    prices = db.Column(db.Float, doc="单价")
+    number = db.Column(db.Integer, doc="数量")
+    money = db.Column(db.Float, doc="总价")
+
+# 我的预约中的分类
+class AppointmentClassification(db.Model):
+    __tablename__ = 'appointment_classification'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    second_column = db.Column(db.String(50), doc="二级栏目")
+
+class AppointmentContent(db.Model):
+    __tablename__ = 'appointment_content'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    content = db.Column(db.String(50), doc="栏目内容")
+    column_id = db.Column(db.Integer, db.ForeignKey('appointment_classification.id'))
+    column = db.relationship('AppointmentClassification',foreign_keys='AppointmentContent.column_id',
+                             backref='contents')
+
+
+# 商城中的分类
+class ShopClassification(db.Model):
+    __tablename__ = 'shop_classification'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    second_column = db.Column(db.String(50), doc="二级栏目")
+    image_path = db.Column(db.String(500), doc="图片路径")
+
+class ShopContent(db.Model):
+    __tablename__ = 'shop_content'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    content = db.Column(db.String(50), doc="栏目内容")
+    prices = db.Column(db.Float, default=1.0, doc="单价")
+    column_id = db.Column(db.Integer, db.ForeignKey('shop_classification.id'))
+    column = db.relationship('ShopClassification', foreign_keys='ShopContent.column_id',
+                             backref='contents')

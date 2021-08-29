@@ -139,5 +139,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  // 注册用户信息
+  goRegistPage:function(){
+    wx.navigateTo({
+      url: '../../pages/register/register',
+    })
   }
 })

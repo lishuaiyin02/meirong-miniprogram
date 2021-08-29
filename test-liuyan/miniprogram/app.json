@@ -1,7 +1,10 @@
 {
   "pages": [
-    "pages/yuyue/yuyue",
+    "pages/register/register",
     "pages/login/login",
+    "pages/yydetails/yydetails",
+    "pages/shop/shop",
+    "pages/yuyue/yuyue",
     "pages/index/index",
     "pages/joinProcess/joinProcess",
     "pages/introduce/introduce",
@@ -17,9 +20,7 @@
     "pages/lookmessage/lookmessage",
     "pages/myartical/myartical",
     "pages/userManagement/userManagement",
-    "pages/addUser/addUser",
-    "pages/yydetails/yydetails"
-  
+    "pages/addUser/addUser"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -40,9 +41,9 @@
         "text": "预约"
       },
       {
-        "selectedIconPath": "images/home.png",
-        "iconPath": "images/home.png",
-        "pagePath": "pages/index/index",
+        "selectedIconPath": "images/shop.png",
+        "iconPath": "images/shop.png",
+        "pagePath": "pages/shop/shop",
         "text": "商城"
       },
       {

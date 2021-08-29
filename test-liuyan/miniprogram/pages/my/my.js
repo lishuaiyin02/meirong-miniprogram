@@ -191,9 +191,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    if (app.globalData.userInfo) {
+    if (app.getGlobalUserInfo()) {
       this.setData({
-        userInfo: app.globalData.userInfo,
+        userInfo: app.getGlobalUserInfo(),
         hasUserInfo: true
       })
       wx.setStorageSync('username', that.data.userInfo.nickName)

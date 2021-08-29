@@ -10,12 +10,24 @@ def order():
     data = json.loads(request.data)
     order = services.save_order(data)
     if order:
-        return jsonify({'status': '200', 'msg': '预约成功', 'order': json_format(order)})
+        return jsonify({'status': '200', 'msg': '预购成功', 'order': json_format(order)})
+    else:
+        return jsonify({'status': '500', 'msg': '预购失败'})
+
+
+@bp.route('/getOclassification')
+def getOclassification():
+    oclassification = services.getOclassification()
+    if oclassification:
+        jsonoclassification = json_format(oclassification)
+
+        for index, ac in enumerate(oclassification):
+            jsonoclassification[index]['contents'] = []
+            jsonoclassification[index]['prices'] = []
+            for content in ac.contents:
+                jsonoclassification[index]['contents'].append(content.content)
+                jsonoclassification[index]['prices'].append(content.prices)
+        print('2323', oclassification[0].contents[0].content)
+        return jsonify({'status': '200', 'msg': '预约成功', 'appointment': jsonoclassification})
     else:
         return jsonify({'status': '500', 'msg': '预约失败'})
-    print(data)
-    # user = services.login(data)
-    # if user:
-    #     return jsonify({'status': '200', 'user': json_format(user)})
-    # else:
-    #     return jsonify({'status': '500', 'msg': '登录失败'})

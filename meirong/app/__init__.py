@@ -18,8 +18,14 @@ def create_app(config_class=Config):
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp)
 
+    from app.appointment import bp as appointment_bp
+    app.register_blueprint(appointment_bp)
+
     from app.order import bp as order_bp
     app.register_blueprint(order_bp)
+
+    from app.user import bp as user_bp
+    app.register_blueprint(user_bp)
 
     return app
 

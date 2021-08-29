@@ -141,7 +141,7 @@ changeDateTimeColumn1(e) {
             title: '请等待...',
           });
           wx.request({
-            url: serverUrl + 'order',
+            url: serverUrl + 'appointment',
             method: "POST",
             data: {
               user_id:app.getGlobalUserInfo().id,
@@ -160,7 +160,7 @@ changeDateTimeColumn1(e) {
                 })
               }else{
                 wx.showToast({
-                  title: res.data.msg,
+                  title: "请求失败",
                   icon:"none",
                   duration: 2000
                 })

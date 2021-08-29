@@ -3,7 +3,7 @@ var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 const app = getApp()
 Page({
   data: {
-    navData: ["美瞳", "美甲", "美容", "身体", "减肥"],
+    navData: [], //"美瞳", "美甲", "美容", "身体", "减肥"
     currentTab: 0,
     navScrollLeft: 0,
     date: '2018-10-01',
@@ -61,7 +61,47 @@ changeDateTimeColumn1(e) {
     dateTime1: arr
   });
 },
-  onLoad() {
+  onLoad: function (options) {
+    var me = this
+    var serverUrl = app.serverUrl;
+    wx.request({
+      url: serverUrl + 'getAclassification',
+      method: "GET",
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success:function(res){
+        if (res.statusCode == 200 && res.data.status == "200"){
+          console.log(res.data)
+          var second_column = res.data.appointment
+          var navData = []
+          for (var i=0;i<second_column.length;i++){
+            navData.push(second_column[i].second_column)
+          }
+          me.setData({
+            navData:res.data.appointment
+          })
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'success',
+            duration: 2000
+          })
+        }else{
+          wx.showToast({
+            title: "请求失败",
+            icon:"none",
+            duration: 2000
+          })
+        }
+      },
+      fail:function(e){
+        wx.showToast({
+          title: '请求出错',
+          icon:'none',
+          duration: 3000
+        })
+      }
+    })
     var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
     var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
    // 精确到分的处理，将数组的秒去掉
