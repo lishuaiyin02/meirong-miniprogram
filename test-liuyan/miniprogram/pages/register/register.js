@@ -44,6 +44,19 @@ Page({
         name: 'phone',
         rules: [{required: true, message: '请填写手机号'}, {mobile: true, message: '电话格式不对'}]
       },
+      {
+        name:"password",
+        rules:{required: true, message: '密码不能为空'},
+      },
+      {
+        name:"repassword",
+        rules:[{required: true, message: '确认密码不能为空'},
+        {validator:(rule,value,param,models)=>{
+          if (models.password != models.repassword ){
+            return rule.message
+          }
+        }, message:"两次密码不一致"}]
+      }
     ],
  
   },
@@ -127,7 +140,6 @@ changeDateTimeColumn(e) {
           duration: 2000
         })
       }
-
     }
    })
 
@@ -198,13 +210,12 @@ changeDateTimeColumn(e) {
           })
         }
       }else{
-          // console.log('jinlai',app.getGlobalUserInfo().id)
-          // var serverUrl = app.serverUrl;
-          // wx.showLoading({
-          //   title: '请等待...',
-          // });
+          var serverUrl = app.serverUrl;
+          wx.showLoading({
+            title: '请等待...',
+          });
           // wx.request({
-          //   url: serverUrl + 'appointment',
+          //   url: serverUrl + 'register',
           //   method: "POST",
           //   data: {
           //     user_id:app.getGlobalUserInfo().id,

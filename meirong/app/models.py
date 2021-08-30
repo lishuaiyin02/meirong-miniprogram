@@ -17,7 +17,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     phone = db.Column(db.String(16))
     sex = db.Column(db.String(20))
-    birthday = db.Column(db.DateTime)
+    birthday = db.Column(db.String(20))
 
     def __repr__(self):
         return '<User {}>'.format(self.id)

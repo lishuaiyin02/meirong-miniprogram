@@ -40,10 +40,10 @@
         </view>
       </mp-cell>
       <mp-cell class="form_item" prop="password" title="登录密码">
-        <input bindinput="formInputChange" value="{{form.password}}" data-filed="password" class="weui-input" placeholder="请填写密码"/>
+        <input type="password" bindinput="formInputChange" value="{{form.password}}" data-filed="password" class="weui-input" placeholder="请填写密码"/>
       </mp-cell>
       <mp-cell class="form_item" prop="repassword" title="确认密码">
-        <input bindinput="formInputChange" value="{{form.repassword}}" data-filed="repassword" class="weui-input" placeholder="请再次填写密码"/>
+        <input type="password" bindinput="formInputChange" value="{{form.repassword}}" data-filed="repassword" class="weui-input" placeholder="请再次填写密码"/>
       </mp-cell>
    
     </mp-cells>

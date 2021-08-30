@@ -18,6 +18,17 @@ def login():
         return jsonify({'status': '500', 'msg': '登录失败'})
 
 
+@bp.route('/register', methods=["GET", "POST"])
+def register():
+    data = json.loads(request.data)
+    user = services.register(data)
+    if user:
+
+        pass
+    else:
+
+        pass
+
 @bp.route('/logout')
 def logout():
     logout_user()
