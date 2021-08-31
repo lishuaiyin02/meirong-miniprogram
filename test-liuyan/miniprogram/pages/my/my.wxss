@@ -52,10 +52,12 @@ color: rgb(5, 1, 252);
 }
 
 .userinfo-avatar {
+  text-align: center;
   width: 128rpx;
   height: 128rpx;
-  margin: 30rpx;
-  border-radius: 50%;
+  
+  border:1px solid rgb(231, 220, 220);
+
 }
 
 .userinfo-nickname {

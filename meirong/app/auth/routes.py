@@ -13,23 +13,13 @@ def login():
     if user:
         session.permanent = True
         login_user(user)
+        cure = current_user
+        print(cure)
         return jsonify({'status': '200', 'user': json_format(user)})
     else:
         return jsonify({'status': '500', 'msg': '登录失败'})
 
 
-@bp.route('/register', methods=["GET", "POST"])
-def register():
-    data = json.loads(request.data)
-    user = services.register(data)
-    if user:
 
-        pass
-    else:
 
-        pass
 
-@bp.route('/logout')
-def logout():
-    logout_user()
-    return jsonify({'status': '200', 'msg': "退出登录"})

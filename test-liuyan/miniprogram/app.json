@@ -1,7 +1,10 @@
 {
   "pages": [
-    "pages/register/register",
+    "pages/my/my",
     "pages/login/login",
+    
+    "pages/register/register",
+    
     "pages/yydetails/yydetails",
     "pages/shop/shop",
     "pages/yuyue/yuyue",
@@ -9,7 +12,6 @@
     "pages/joinProcess/joinProcess",
     "pages/introduce/introduce",
     "pages/singup/signup",
-    "pages/my/my",
     "pages/select/select",
     "pages/write/write",
     "pages/message/message",

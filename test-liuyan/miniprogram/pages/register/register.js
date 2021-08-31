@@ -7,13 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isregister:true,
     nicknames:[], // 现在数据库中已经存在的昵称
     startYear: 2000,
     endYear: 2050,
     dateTime: null,
     dateTimeArray: null,
     date:"2021-01-01",
-    files: [],
+    files: [{
+      // url: "http://tmp/wx903077bcc63139f8.o6zAJszgRc7l18MEe5J-vwgEu6xE.ylt29lqjSCZ67d4f2f63f3c7b9aede985a6bfe8ef55a.jpg",
+      url: 'http://mmbiz.qpic.cn/mmbiz_png/VUIF3v9blLsicfV8ysC76e9fZzWgy8YJ2bQO58p43Lib8ncGXmuyibLY7O3hia8sWv25KCibQb7MbJW3Q7xibNzfRN7A/0',
+  } ],
     sexs:["男","女"],
     form:{
       image:"",
@@ -25,6 +29,10 @@ Page({
     },
     errorMsg: '', // 验证表单显示错误信息
     rules: [
+      {
+        name: 'image',
+        rules: {required: true, message: '请上传自己的头像'},
+      },
       {
         name: 'nickname',
         rules: [{required: true, message: '请填写昵称姓名'},
@@ -110,12 +118,33 @@ changeDateTimeColumn(e) {
       "form.sex":me.data.sexs[index],
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var me = this;
     var serverUrl = app.serverUrl;
+    me.setData({
+      selectFile: me.selectFile.bind(this),
+      uplaodFile: me.uplaodFile.bind(this)
+  })
+    console.log(JSON.stringify(options))
+    if (JSON.stringify(options) != "{}" ){
+      var userInfo = JSON.parse(options.userInfo)
+      console.log("options", userInfo.image)
+      var file = [{url:userInfo.image}]
+      me.setData({
+        isregister:false,
+        files:file,
+       "form.image": userInfo.image,
+       "form.nickname": userInfo.nickname,
+       "form.realname": userInfo.realname,
+       "form.phone":userInfo.phone,
+       "form.sex": userInfo.sex,
+       "form.birthday": userInfo.birthday
+     }) 
+    }
     var obj = dateTimePicker.dateTimePicker(me.data.startYear, me.data.endYear);
     me.setData({
       dateTime: obj.dateTime.splice(0,3),
@@ -142,32 +171,18 @@ changeDateTimeColumn(e) {
       }
     }
    })
+  },
 
-    me.setData({
-      selectFile: this.selectFile.bind(this),
-      uplaodFile: this.uplaodFile.bind(this)
-  })
-  },
-  previewImage: function(e){
-    wx.previewImage({
-        current: e.currentTarget.id, // 当前显示图片的http链接
-        urls: this.data.files // 需要预览的图片http链接列表
-    })
-},
-  selectFile(files) {
-    console.log('files', files)
-    // 返回false可以阻止某次文件上传
-  },
   uplaodFile(files) {
-      console.log('upload files', files)
-      // 文件上传的函数，返回一个promise
-      return new Promise((resolve, reject) => {
-        var urls = files.tempFilePaths
-        resolve({urls})
-          setTimeout(() => {
-              reject('some error')
-          }, 1000)
-      })
+    console.log('upload files', files)
+    // 文件上传的函数，返回一个promise
+    return new Promise((resolve, reject) => {
+      var urls = files.tempFilePaths
+      resolve({urls})
+        setTimeout(() => {
+            reject('some error')
+        }, 1000)
+    })
   },
   uploadError(e) {
       console.log('upload error', e.detail)
@@ -179,6 +194,17 @@ changeDateTimeColumn(e) {
       "form.image":e.detail.urls[0]
     })
   },
+  previewImage: function(e){
+    wx.previewImage({
+        current: e.currentTarget.id, // 当前显示图片的http链接
+        urls: this.data.files // 需要预览的图片http链接列表
+    })
+},
+  selectFile(files) {
+    console.log('files', files)
+    // 返回false可以阻止某次文件上传
+  },
+ 
  //选择上传图片
  chooseImage: function (e) {
   var that = this;
@@ -198,14 +224,15 @@ changeDateTimeColumn(e) {
 // 点击注册按钮
   // 点击确定按钮
   weSubmitForm:function(e){
-    console.log(this.data.form)
-    const {content, realname, phone, dateTime, dateTimeArray} = this.data.form
+    var me = this
+    console.log(me.data.form)
+    const {content, realname, phone, dateTime, dateTimeArray} = me.data.form
     console.log(content, realname,phone, dateTime,dateTimeArray)
-    this.selectComponent('#form').validate((valid,errors) => {
+    me.selectComponent('#form').validate((valid,errors) => {
       if(!valid){
         const firstError = Object.keys(errors)
         if(firstError.length){
-          this.setData({
+          me.setData({
             errorMsg:errors[firstError[0]].message
           })
         }
@@ -214,47 +241,47 @@ changeDateTimeColumn(e) {
           wx.showLoading({
             title: '请等待...',
           });
-          // wx.request({
-          //   url: serverUrl + 'register',
-          //   method: "POST",
-          //   data: {
-          //     user_id:app.getGlobalUserInfo().id,
-          //     form: this.data.form
-          //   },
-          //   header: {
-          //     'content-type': 'application/json' // 默认值
-          //   },
-          //   success:function(res){
-          //     console.log(res)
-          //     if (res.statusCode == 200 && res.data.status == "200"){
-          //       wx.showToast({
-          //         title: res.data.msg,
-          //         icon: 'success',
-          //         duration: 2000
-          //       })
-          //     }else{
-          //       wx.showToast({
-          //         title: "请求失败",
-          //         icon:"none",
-          //         duration: 2000
-          //       })
-          //     }
+          wx.request({
+            url: serverUrl + 'register',
+            method: "POST",
+            data: {
+              user_id:app.getGlobalUserInfo().id,
+              form: this.data.form
+            },
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            success:function(res){
+              console.log(res)
+              if (res.statusCode == 200 && res.data.status == "200"){
+                wx.showToast({
+                  title: res.data.msg,
+                  icon: 'success',
+                  duration: 2000
+                })
+              }else{
+                wx.showToast({
+                  title: "请求失败",
+                  icon:"none",
+                  duration: 2000
+                })
+              }
   
-          //   },
-          //   fail:function(){
-          //     wx.hideLoading();
-          //     wx.showToast({
-          //       title: '请求出错',
-          //       icon:'none',
-          //       duration: 3000
-          //     })
-          //   }
-          // })
+            },
+            fail:function(){
+              wx.hideLoading();
+              wx.showToast({
+                title: '请求出错',
+                icon:'none',
+                duration: 3000
+              })
+            }
+          })
           wx.showToast({
             title: '提交成功',
           })
-          wx.navigateBack({
-            delta: 1,
+          wx.navigateTo({
+            url: '../../pages/login/login',
           })
         
       }

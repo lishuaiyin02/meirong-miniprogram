@@ -13,7 +13,8 @@ Page({
     isPassword:false,//是否显示密码
     show:'password',//原始为密码形式
     isUperuser:false,//判断是不是超级管理权限，传给下一个select页面
-
+    userInfo:null,
+    userInfoString:''
   },
   autoreply:function(){
     
@@ -23,6 +24,15 @@ Page({
 
       },
     })
+  },
+
+  logout:function(){
+    var me = this
+    wx.navigateTo({
+      url: '../../pages/login/login',
+    })
+    app.setGlobalUserInfo(null)
+    console.log(app.getGlobalUserInfo())
   },
   //获得当前用户的openID
   getopenID:function(){
@@ -186,49 +196,23 @@ Page({
       return;
     }
   },
+  previewImage: function(e){
+    var me = this
+    console.log(me.data.userInfo.image)
+    wx.previewImage({
+        current: me.data.userInfo.image, // 当前显示图片的http链接
+        urls: [me.data.userInfo.image] // 需要预览的图片http链接列表
+    })
+},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-    if (app.getGlobalUserInfo()) {
-      this.setData({
-        userInfo: app.getGlobalUserInfo(),
-        hasUserInfo: true
-      })
-      wx.setStorageSync('username', that.data.userInfo.nickName)
-      wx.setStorageSync('headpath', that.data.userInfo.avatarUrl)
-      console.log("在index页面全局app1中获取到的用户信息为：" + that.data.userInfo.nickName + " " +
-        that.data.userInfo.avatarUrl);
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-        wx.setStorageSync('username', that.data.userInfo.nickName)
-        wx.setStorageSync('headpath', that.data.userInfo.avatarUrl)
-        console.log("在index页面全局app2中获取到的用户信息为：" + that.data.userInfo.nickName + " " + that.data.userInfo.avatarUrl);
-      }
-    } else {
-      //没有获取到用户信息就发起授权窗口
-      // 没有获取到用户信息就发起授权窗口
-      wx.getUserInfo({
-        success: res => {
-          // console.log("用户名3：" + res.userInfo.nickName + " " + res.userInfo.avatarUrl)
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-          wx.setStorageSync('username', that.data.userInfo.nickName)
-          wx.setStorageSync('headpath', that.data.userInfo.avatarUrl)
-          console.log("在index页面全局app3中获取到的用户信息为：" + that.data.userInfo.nickName + " " + that.data.userInfo.avatarUrl);
-        },
-      })
-    }
+    that.setData({
+      userInfo: app.getGlobalUserInfo(),
+      userInfoString:JSON.stringify(app.getGlobalUserInfo())
+    })
   },
 
   /**

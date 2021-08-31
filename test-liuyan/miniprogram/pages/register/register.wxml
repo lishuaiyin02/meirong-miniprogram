@@ -14,42 +14,51 @@
         upload="{{uplaodFile}}" files="{{files}}"  title="" tips=""></mp-uploader>
       </mp-cell>
       <mp-cell class="form_item" prop="nickname" title="昵称">
-        <input bindinput="formInputChange" value="{{form.nickname}}" data-filed="nickname" class="weui-input" placeholder="请填写昵称"/>
+        <input disabled="{{!isregister}}" bindinput="formInputChange" value="{{form.nickname}}" data-filed="nickname" class="weui-input" placeholder="请填写昵称"/>
       </mp-cell>
       <mp-cell class="form_item" prop="realname" title="真实姓名">
-        <input bindinput="formInputChange" value="{{form.realname}}" data-filed="realname" class="weui-input" placeholder="请填写真实姓名"/>
+        <input disabled="{{!isregister}}" bindinput="formInputChange" value="{{form.realname}}" data-filed="realname" class="weui-input" placeholder="请填写真实姓名"/>
       </mp-cell>
       <mp-cell class="form_item" prop="phone" title="手机号">
         <input bindinput="formInputChange" value="{{form.phone}}" data-filed="phone" class="weui-input" placeholder="请填写手机号"/>
       </mp-cell>
       <mp-cell class="form_item" prop="sex" title="性别">
-        <picker bindchange="bindPickerSex" value="{{index}}" range="{{sexs}}">
-                <view class="picker">
+        <picker bindchange="bindPickerSex" value="{{index}}" range="{{sexs}}" disabled="{{!isregister}}">
+                <view class="picker" >
                   {{form.sex}}
                 </view>
         </picker>
       </mp-cell>
       <mp-cell class="form_item" prop="birthday" title="出生年月">
-        <view class="picker_wrap" > 
+        <view class="picker_wrap" disabled="{{!isregister}}"> 
           <picker class='alarm_picker' mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime"
-          bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+          bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}" disabled="{{!isregister}}">
           <view class="picker">
             {{form.birthday}}
             </view>
           </picker>
         </view>
       </mp-cell>
-      <mp-cell class="form_item" prop="password" title="登录密码">
+      <block wx:if="{{isregister}}">
+        <mp-cell class="form_item" prop="password" title="登录密码">
         <input type="password" bindinput="formInputChange" value="{{form.password}}" data-filed="password" class="weui-input" placeholder="请填写密码"/>
-      </mp-cell>
-      <mp-cell class="form_item" prop="repassword" title="确认密码">
-        <input type="password" bindinput="formInputChange" value="{{form.repassword}}" data-filed="repassword" class="weui-input" placeholder="请再次填写密码"/>
-      </mp-cell>
+        </mp-cell>
+        <mp-cell class="form_item" prop="repassword" title="确认密码">
+          <input type="password" bindinput="formInputChange" value="{{form.repassword}}" data-filed="repassword" class="weui-input" placeholder="请再次填写密码"/>
+        </mp-cell>
+      </block>
+      
    
     </mp-cells>
     <view class="submit_btn_wrap">
-      <button class="weui-btn" type="primary" bindtap="weSubmitForm">注册</button>
-      <button class="weui-btn" type="warn" bindtap="restForm" >直接登录</button>
+      <block wx:if="{{isregister}}">
+         <button class="weui-btn" type="primary" bindtap="weSubmitForm">注册</button>
+         <button class="weui-btn" type="warn" bindtap="restForm" >直接登录</button>
+      </block>
+      <block wx:if="{{!isregister}}">
+         <button class="weui-btn" type="primary" bindtap="saveEdit">修改</button>
+      </block>
+     
     </view>
   </mp-form>
 </view>

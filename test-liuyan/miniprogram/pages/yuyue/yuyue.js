@@ -81,11 +81,11 @@ changeDateTimeColumn1(e) {
           me.setData({
             navData:res.data.appointment
           })
-          wx.showToast({
-            title: res.data.msg,
-            icon: 'success',
-            duration: 2000
-          })
+          // wx.showToast({
+          //   title: "",
+          //   icon: 'success',
+          //   duration: 2000
+          // })
         }else{
           wx.showToast({
             title: "请求失败",

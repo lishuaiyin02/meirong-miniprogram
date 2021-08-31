@@ -15,3 +15,19 @@ def getNicknames():
         return jsonify({'status': '200', 'msg': '查询成功', 'nicknames': nickname})
     else:
         return jsonify({'status': '500', 'msg': '查询失败'})
+
+
+@bp.route('/register', methods=["GET", "POST"])
+def register():
+    data = json.loads(request.data)
+    user = services.register(data)
+    if user:
+        return jsonify({'status': '200', 'msg': "注册成功", 'user': json_format(user)})
+    else:
+        return jsonify({'status': '500', 'msg': "注册失败"})
+
+
+@bp.route('/saveEdit', methods=["GET", "POST"])
+def saveEdit():
+
+    pass
