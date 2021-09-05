@@ -114,11 +114,11 @@ Page({
             "form.prices":res.data.appointment[0].prices[0],
             "form.product":res.data.appointment[0].contents[0]
           })
-          wx.showToast({
-            title: res.data.msg,
-            icon: 'success',
-            duration: 2000
-          })
+          // wx.showToast({
+          //   title: res.data.msg,
+          //   icon: 'success',
+          //   duration: 2000
+          // })
         }else{
           wx.showToast({
             title: "请求失败",

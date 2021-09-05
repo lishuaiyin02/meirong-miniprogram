@@ -2,6 +2,7 @@
 var dateTimePicker = require('../../utils/dateTimePicker.js');
 const app = getApp()
 var nicknames = []
+var isregister_all = true
 Page({
   /**
    * 页面的初始数据
@@ -14,10 +15,7 @@ Page({
     dateTime: null,
     dateTimeArray: null,
     date:"2021-01-01",
-    files: [{
-      // url: "http://tmp/wx903077bcc63139f8.o6zAJszgRc7l18MEe5J-vwgEu6xE.ylt29lqjSCZ67d4f2f63f3c7b9aede985a6bfe8ef55a.jpg",
-      url: 'http://mmbiz.qpic.cn/mmbiz_png/VUIF3v9blLsicfV8ysC76e9fZzWgy8YJ2bQO58p43Lib8ncGXmuyibLY7O3hia8sWv25KCibQb7MbJW3Q7xibNzfRN7A/0',
-  } ],
+    files: [],
     sexs:["男","女"],
     form:{
       image:"",
@@ -38,7 +36,7 @@ Page({
         rules: [{required: true, message: '请填写昵称姓名'},
         {validator:(rule,value,param,models)=>{
            console.log(rule,value,param,models)
-          if (nicknames.indexOf(models.nickname) > -1){
+          if (nicknames.indexOf(models.nickname) > -1 & isregister_all){
             return rule.message
           }
          
@@ -134,6 +132,7 @@ changeDateTimeColumn(e) {
       var userInfo = JSON.parse(options.userInfo)
       console.log("options", userInfo.image)
       var file = [{url:userInfo.image}]
+      isregister_all = false,
       me.setData({
         isregister:false,
         files:file,
@@ -142,7 +141,9 @@ changeDateTimeColumn(e) {
        "form.realname": userInfo.realname,
        "form.phone":userInfo.phone,
        "form.sex": userInfo.sex,
-       "form.birthday": userInfo.birthday
+       "form.birthday": userInfo.birthday,
+       "form.password":'123',
+       "form.repassword":'123'
      }) 
     }
     var obj = dateTimePicker.dateTimePicker(me.data.startYear, me.data.endYear);
@@ -177,6 +178,31 @@ changeDateTimeColumn(e) {
     console.log('upload files', files)
     // 文件上传的函数，返回一个promise
     return new Promise((resolve, reject) => {
+      var that = this
+      var serverUrl = app.serverUrl
+      var user_nickname = app.getGlobalUserInfo().nickname
+      wx.uploadFile({
+        filePath: files.tempFilePaths[0],
+        name: 'photo',
+        url: serverUrl + 'saveImage/' + user_nickname ,
+        header:{"Content-Type":"multipart/form-data"},
+        formData: {
+          'user33': 'test'
+        },
+        success:function(res){
+          console.log(res)
+          debugger
+          res.data = JSON.parse(res.data)
+          if (res.statusCode == 200 && res.data["status"] == "200"){
+            var file = [{url:res.data.url}]
+            that.setData({
+              "form.image":res.data.url,
+              files:file
+            }) 
+          }
+        }
+
+      })
       var urls = files.tempFilePaths
       resolve({urls})
         setTimeout(() => {
@@ -190,9 +216,9 @@ changeDateTimeColumn(e) {
   uploadSuccess(e) {
     var me = this
     console.log('upload success', e.detail.urls[0])
-    me.setData({
-      "form.image":e.detail.urls[0]
-    })
+    // me.setData({
+    //   "form.image":e.detail.urls[0]
+    // })
   },
   previewImage: function(e){
     wx.previewImage({
@@ -238,6 +264,7 @@ changeDateTimeColumn(e) {
         }
       }else{
           var serverUrl = app.serverUrl;
+          console.log('serverUrl',serverUrl)
           wx.showLoading({
             title: '请等待...',
           });
@@ -245,7 +272,6 @@ changeDateTimeColumn(e) {
             url: serverUrl + 'register',
             method: "POST",
             data: {
-              user_id:app.getGlobalUserInfo().id,
               form: this.data.form
             },
             header: {
@@ -259,6 +285,18 @@ changeDateTimeColumn(e) {
                   icon: 'success',
                   duration: 2000
                 })
+                if (!isregister_all){
+                  app.setGlobalUserInfo(res.data.user);
+                }
+                if (isregister_all==true){
+                  wx.navigateTo({
+                    url: '../../pages/login/login',
+                  })
+                }else{
+                  wx.switchTab({
+                    url: '../../pages/my/my',
+                  })
+                }
               }else{
                 wx.showToast({
                   title: "请求失败",
@@ -276,14 +314,7 @@ changeDateTimeColumn(e) {
                 duration: 3000
               })
             }
-          })
-          wx.showToast({
-            title: '提交成功',
-          })
-          wx.navigateTo({
-            url: '../../pages/login/login',
-          })
-        
+          })  
       }
     })
   },

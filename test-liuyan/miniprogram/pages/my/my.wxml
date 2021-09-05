@@ -8,7 +8,7 @@
 
 			<mp-cells title=" ">
 					<mp-cell link url="../../pages/register/register?isregister=false&userInfo={{userInfoString}}"  hover value="基本信息"> </mp-cell>
-					<mp-cell link url=""  hover value="我的预约"> </mp-cell>
+					<mp-cell link url="../../pages/appointments/appointments"  hover value="我的预约"> </mp-cell>
 					<mp-cell link url=""  hover value="我的订单"> </mp-cell>
 					<mp-cell link url=""  hover value="常见问题"> </mp-cell>
       </mp-cells>

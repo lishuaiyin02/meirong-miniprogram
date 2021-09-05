@@ -2,9 +2,7 @@
   "pages": [
     "pages/my/my",
     "pages/login/login",
-    
     "pages/register/register",
-    
     "pages/yydetails/yydetails",
     "pages/shop/shop",
     "pages/yuyue/yuyue",
@@ -22,7 +20,8 @@
     "pages/lookmessage/lookmessage",
     "pages/myartical/myartical",
     "pages/userManagement/userManagement",
-    "pages/addUser/addUser"
+    "pages/addUser/addUser",
+    "pages/appointments/appointments"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

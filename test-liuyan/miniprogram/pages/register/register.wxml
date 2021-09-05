@@ -56,7 +56,7 @@
          <button class="weui-btn" type="warn" bindtap="restForm" >直接登录</button>
       </block>
       <block wx:if="{{!isregister}}">
-         <button class="weui-btn" type="primary" bindtap="saveEdit">修改</button>
+         <button class="weui-btn" type="primary" bindtap="weSubmitForm">修改</button>
       </block>
      
     </view>

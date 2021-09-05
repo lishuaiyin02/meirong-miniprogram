@@ -3,14 +3,17 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
 from flask_login import LoginManager
+from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 
 db = SQLAlchemy()
 migrate = Migrate(db=db, render_as_batch=True, compare_type=True, compare_server_default=True)
 login = LoginManager()
 
+uploaded_photos = UploadSet('photos')
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
+    configure_uploads(app, uploaded_photos)
     db.init_app(app)
     migrate.init_app(app, db)
     login.init_app(app)
