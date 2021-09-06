@@ -20,12 +20,31 @@ def getAclassification():
     aclassification = services.getAclassification()
     if aclassification:
         jsonaclassification = json_format(aclassification)
-
         for index, ac in enumerate(aclassification):
             jsonaclassification[index]['contents'] = []
             for content in ac.contents:
                 jsonaclassification[index]['contents'].append(content.content)
-        print('2323', aclassification[0].contents[0].content)
         return jsonify({'status': '200', 'msg': '预约成功', 'appointment': jsonaclassification})
     else:
         return jsonify({'status': '500', 'msg': '预约失败'})
+
+
+@bp.route('/getAppointments')
+def getAppointments():
+    user_id = request.values.get("user_id")
+    appointments = services.getAppointments(user_id)
+    if appointments == "False":
+        return jsonify({'status': '500', 'msg': '获取预约失败'})
+    else:
+        return jsonify({'status': '200', 'appointments': json_format(appointments)})
+
+
+
+@bp.route('/cancelAppointment')
+def cancelAppointment():
+    appointment_id = request.values.get('appointment_id')
+    cancel = services.cancelAppointment(appointment_id)
+    if cancel:
+        return jsonify({'status': '200', 'msg': '取消成功'})
+    else:
+        return jsonify({'status': '500', 'msg': '取消失败'})

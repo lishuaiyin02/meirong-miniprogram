@@ -59,6 +59,7 @@ class Appointment(db.Model):
     realname = db.Column(db.String(255), doc='预约人的真实姓名')
     phone = db.Column(db.String(15), doc='预约人的电话号码')
     datetime = db.Column(db.String(50), doc='预约时间')
+    valid = db.Column(db.Boolean,default=True) # 取消预约的时候变为false
 
 #  我的订单
 class Order(db.Model):
@@ -70,6 +71,7 @@ class Order(db.Model):
     prices = db.Column(db.Float, doc="单价")
     number = db.Column(db.Integer, doc="数量")
     money = db.Column(db.Float, doc="总价")
+    valid = db.Column(db.Boolean, default=True)  # 取消订单的时候变为false
 
 # 我的预约中的分类
 class AppointmentClassification(db.Model):

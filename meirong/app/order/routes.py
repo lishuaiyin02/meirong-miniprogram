@@ -31,3 +31,24 @@ def getOclassification():
         return jsonify({'status': '200', 'msg': '预约成功', 'appointment': jsonoclassification})
     else:
         return jsonify({'status': '500', 'msg': '预约失败'})
+
+
+@bp.route('/getOrders')
+def getOrders():
+    user_id = request.values.get("user_id")
+    orders = services.getOrders(user_id)
+    if orders == "False":
+        return jsonify({'status': '500', 'msg': '获取订单失败'})
+    else:
+        return jsonify({'status': '200', 'orders': json_format(orders)})
+
+    cancelOrder
+
+@bp.route('/cancelOrder')
+def cancelOrder():
+    order_id = request.values.get('order_id')
+    cancel = services.cancelOrder(order_id)
+    if cancel:
+        return jsonify({'status': '200', 'msg': '取消成功'})
+    else:
+        return jsonify({'status': '500', 'msg': '取消失败'})

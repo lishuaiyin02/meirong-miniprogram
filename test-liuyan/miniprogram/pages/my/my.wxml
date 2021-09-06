@@ -9,20 +9,9 @@
 			<mp-cells title=" ">
 					<mp-cell link url="../../pages/register/register?isregister=false&userInfo={{userInfoString}}"  hover value="基本信息"> </mp-cell>
 					<mp-cell link url="../../pages/appointments/appointments"  hover value="我的预约"> </mp-cell>
-					<mp-cell link url=""  hover value="我的订单"> </mp-cell>
-					<mp-cell link url=""  hover value="常见问题"> </mp-cell>
+					<mp-cell link url="../../pages/orders/orders"  hover value="我的订单"> </mp-cell>
+					<mp-cell link url="../../pages/questions/questions"  hover value="常见问题"> </mp-cell>
       </mp-cells>
 
 	<!-- <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo"> -->
 	<button class='bottom' open-type="contact" bindtap="autoreply">联系我 </button>
-
-
-<!-- <view>
-	<modal title="后台登录" style='color: #000;font-size: 32rpx;' hidden="{{modalHidden}}" confirm-text="确定" cancel-text="取消" bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">
-		<view class='reply-content'>只有管理员才能进行登录，您的ip地址已记录。</view>
-		<view class="control-password">
-			<input type="{{show}}" bindinput='getInputContent' class='reply-input' placeholder='请输入密码' value='{{inputContent}}' placeholder-style='font-size: 32rpx;'></input>
-			<image class='showImg' bindtap='showPassword' src="{{isPassword ? '../../images/close.png' : '../../images/open.png' }}"></image>
-		</view>
-	</modal>
-</view> -->

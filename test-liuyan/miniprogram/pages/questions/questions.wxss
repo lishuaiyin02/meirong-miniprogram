@@ -1,0 +1,12 @@
+/* miniprogram/pages/questions/questions.wxss */
+.question{
+  font-size: small;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.answer{
+  margin-top: 20rpx;
+  font-size: larger;
+  font-family: Arial, Helvetica, sans-serif;
+
+}

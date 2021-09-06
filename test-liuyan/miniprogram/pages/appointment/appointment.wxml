@@ -1,0 +1,30 @@
+<!--miniprogram/pages/appointment/appointment.wxml-->
+<view class="we_form_wrap">
+<mp-form id="form" rules="{{rules}}" models="{{form}}">
+    <mp-cells>
+      <mp-cell class="form_item" prop="content" title="预约内容">
+        <input disabled="true" bindinput="formInputChange" value="{{appointment.content}}" data-filed="content" class="weui-input"/>
+      </mp-cell>
+      <mp-cell class="form_item" prop="realname" title="真实姓名">
+        <input disabled="true" bindinput="formInputChange" value="{{appointment.realname}}" data-filed="realname" class="weui-input" placeholder="请填写真实姓名"/>
+      </mp-cell>
+      <mp-cell class="form_item" prop="phone" title="电话">
+        <input disabled="true" bindinput="formInputChange" value="{{appointment.phone}}" data-filed="phone" class="weui-input" placeholder="请填写手机号"/>
+      </mp-cell>
+      <mp-cell class="form_item_time" title="预约时间">
+         <input disabled="true" bindinput="formInputChange" value="{{appointment.datetime}}" data-filed="time" class="weui-input" placeholder="请填写手机号"/>
+      </mp-cell>
+    </mp-cells>
+    <view class="submit_btn_wrap">
+      <!-- <button class="weui-btn" type="primary" bindtap="cancelAppointment" >取消预约</button> -->
+      <view class="page__bd">
+        <view class="weui-btn-area">
+          <button class="weui-btn" type="primary" bindtap="openConfirm">取消预约</button>
+        </view>
+      </view>
+    </view>
+    <mp-dialog title="提示" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+      <view>确认取消预约</view>
+    </mp-dialog>
+  </mp-form>
+</view>

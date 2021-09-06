@@ -1,0 +1,31 @@
+<!--miniprogram/pages/order/order.wxml-->
+<view class="we_form_wrap">
+<mp-form id="form" rules="{{rules}}" models="{{form}}">
+    <mp-cells>
+            <mp-cell class="form_item" prop="product" title="产品">
+             <input value="{{order.product}}" data-filed="product" class="weui-input" disabled="true"/>
+            </mp-cell>
+            <mp-cell class="form_item" prop="prices" title="单价">
+              <input value="{{order.prices}}" data-filed="prices" class="weui-input" disabled="true"/>
+            </mp-cell>
+            <mp-cell class="form_item" prop="number" title="数量">
+              <input value="{{order.number}}" data-filed="number" class="weui-input" disabled="true"/>
+            </mp-cell>
+            <mp-cell class="form_item" prop="money" title="总价">
+              <input value="{{order.money}}"  class="weui-input" disabled="true"/>
+            </mp-cell>
+          </mp-cells>
+          <view class="submit_btn_wrap">
+            <!-- <button class="weui-btn" type="primary" bindtap="cancelOrder">取消订单</button> -->
+            <view class="page__bd">
+              <view class="weui-btn-area">
+                  <button class="weui-btn" type="primary" bindtap="openConfirm">取消订单</button>
+              </view>
+            </view>
+          </view>
+          <mp-dialog title="提示" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+            <view>确认取消订单</view>
+          </mp-dialog>
+  </mp-form>
+  
+</view>

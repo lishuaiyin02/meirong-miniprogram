@@ -82,3 +82,9 @@
 .stepper .disabled{  
   color: #ccc;  
 } 
+.submit_btn_wrap {
+  margin-left: 40rpx;
+  margin-top: 20rpx;
+  padding: 10px 20rpx;
+  width: 80%;
+}

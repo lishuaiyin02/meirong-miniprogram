@@ -191,7 +191,6 @@ changeDateTimeColumn(e) {
         },
         success:function(res){
           console.log(res)
-          debugger
           res.data = JSON.parse(res.data)
           if (res.statusCode == 200 && res.data["status"] == "200"){
             var file = [{url:res.data.url}]

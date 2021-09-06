@@ -2,7 +2,7 @@ from app import db
 from app.models import Appointment, AppointmentClassification, AppointmentContent
 from sqlalchemy.exc import DataError, DBAPIError
 from flask_login import current_user
-
+from sqlalchemy import and_
 
 def save_appointment(data):
     user_id = data['user_id']
@@ -32,4 +32,23 @@ def getAclassification():
         aclassification = AppointmentClassification.query.all()
         return aclassification
     except:
+        return False
+
+
+def getAppointments(user_id):
+    try:
+        appointments = Appointment.query.filter(and_(Appointment.user_id == user_id,
+                                                     Appointment.valid)).all()
+        return appointments
+    except:
+        return "False"
+
+
+def cancelAppointment(appointment_id):
+    try:
+        Appointment.query.filter(Appointment.id == appointment_id).update({'valid':False})
+        db.session.commit()
+        return True
+    except (DataError, DBAPIError) as ex:
+        print(ex)
         return False

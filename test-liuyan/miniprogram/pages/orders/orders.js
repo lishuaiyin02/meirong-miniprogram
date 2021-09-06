@@ -1,4 +1,4 @@
-// pages/appointments/appointments.js
+// miniprogram/pages/orders/orders.js
 var app = getApp()
 Page({
 
@@ -6,8 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    appointments:[],
-    strappointments:''
+    orders:[],
+    strorders:''
+
   },
 
   /**
@@ -17,7 +18,7 @@ Page({
     var that = this
     var serverUrl = app.serverUrl
     wx.request({
-      url: serverUrl + 'getAppointments',
+      url: serverUrl + 'getOrders',
       method: "GET",
       data:{
         user_id:app.getGlobalUserInfo().id
@@ -28,8 +29,8 @@ Page({
       success:function(res){
         if (res.statusCode == 200 && res.data.status == "200"){
           that.setData({
-            appointments:res.data.appointments,
-            strappointments:JSON.stringify(res.data.appointments)
+            orders:res.data.orders,
+            strorders:JSON.stringify(res.data.orders)
           })
         }else{
           wx.showToast({
@@ -40,6 +41,7 @@ Page({
         }
       }
     })
+
   },
 
   /**
@@ -56,7 +58,7 @@ Page({
     var that = this
     var serverUrl = app.serverUrl
     wx.request({
-      url: serverUrl + 'getAppointments',
+      url: serverUrl + 'getOrders',
       method: "GET",
       data:{
         user_id:app.getGlobalUserInfo().id
@@ -67,8 +69,8 @@ Page({
       success:function(res){
         if (res.statusCode == 200 && res.data.status == "200"){
           that.setData({
-            appointments:res.data.appointments,
-            strappointments:JSON.stringify(res.data.appointments)
+            orders:res.data.orders,
+            strorders:JSON.stringify(res.data.orders)
           })
         }else{
           wx.showToast({

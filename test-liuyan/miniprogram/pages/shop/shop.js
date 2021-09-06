@@ -163,9 +163,12 @@ Page({
       })
       var products = this.data.navData[this.data.currentTab].contents
       var prices = this.data.navData[this.data.currentTab].prices
+      var num = 1
       this.setData({
         "form.product":products[0],
-        "form.prices":prices[0]
+        "form.prices":prices[0],
+        "form.num": num,
+        "form.money": num * prices[0]
       })
     }
   },

@@ -1,0 +1,6 @@
+<!--miniprogram/pages/orders/orders.wxml-->
+<mp-cells title="所有订单">
+  <block wx:for="{{orders}}" wx:for-index="idx" wx:for-item="order" wx:key="idx">
+		<mp-cell link url="../../pages/order/order?orders={{strorders}}&index={{idx}}"  hover value="{{order.product}}"> </mp-cell>
+  </block>
+</mp-cells>

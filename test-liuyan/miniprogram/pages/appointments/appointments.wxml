@@ -1,2 +1,7 @@
 <!--pages/appointments/appointments.wxml-->
-<text>pages/appointments/appointments.wxml</text>
+
+<mp-cells title="所有预约">
+  <block wx:for="{{appointments}}" wx:for-index="idx" wx:for-item="appointment" wx:key="idx">
+		<mp-cell link url="../../pages/appointment/appointment?appointments={{strappointments}}&index={{idx}}"  hover value="{{appointment.content}}"> </mp-cell>
+  </block>
+</mp-cells>

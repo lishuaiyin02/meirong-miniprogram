@@ -21,7 +21,11 @@
     "pages/myartical/myartical",
     "pages/userManagement/userManagement",
     "pages/addUser/addUser",
-    "pages/appointments/appointments"
+    "pages/appointments/appointments",
+    "pages/appointment/appointment",
+    "pages/orders/orders",
+    "pages/order/order",
+    "pages/questions/questions"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
