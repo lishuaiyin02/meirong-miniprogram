@@ -103,3 +103,11 @@ class ShopContent(db.Model):
     column_id = db.Column(db.Integer, db.ForeignKey('shop_classification.id'))
     column = db.relationship('ShopClassification', foreign_keys='ShopContent.column_id',
                              backref='contents')
+
+
+class Question(db.Model):
+    __tablename__ = 'questions'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    question = db.Column(db.String(500))
+    answer = db.Column(db.String(500))
+    valid = db.Column(db.Boolean, default=True)  # 删除问题的时候变为false

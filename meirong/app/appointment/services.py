@@ -3,6 +3,7 @@ from app.models import Appointment, AppointmentClassification, AppointmentConten
 from sqlalchemy.exc import DataError, DBAPIError
 from flask_login import current_user
 from sqlalchemy import and_
+from flask import current_app
 
 def save_appointment(data):
     user_id = data['user_id']
@@ -24,14 +25,17 @@ def save_appointment(data):
         print(form,'\n',content,'\n',realname,'\n',phone,'\n',dateTime,'\n',dateTimeArray,'\n',user_id)
         return appointment
     except (DataError, DBAPIError) as ex:
-        # current_app.logger.error(ex)
+        current_app.logger.error(ex)
+        db.session.rollback()
         return False
 
 def getAclassification():
     try:
         aclassification = AppointmentClassification.query.all()
         return aclassification
-    except:
+    except (DataError, DBAPIError) as ex:
+        current_app.logger.error(ex)
+        db.session.rollback()
         return False
 
 
@@ -40,7 +44,9 @@ def getAppointments(user_id):
         appointments = Appointment.query.filter(and_(Appointment.user_id == user_id,
                                                      Appointment.valid)).all()
         return appointments
-    except:
+    except (DataError, DBAPIError) as ex:
+        current_app.logger.error(ex)
+        db.session.rollback()
         return "False"
 
 
@@ -50,5 +56,6 @@ def cancelAppointment(appointment_id):
         db.session.commit()
         return True
     except (DataError, DBAPIError) as ex:
-        print(ex)
+        current_app.logger.error(ex)
+        db.session.rollback()
         return False

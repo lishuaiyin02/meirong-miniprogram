@@ -14,4 +14,6 @@
       </mp-cells>
 
 	<!-- <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo"> -->
-	<button class='bottom' open-type="contact" bindtap="autoreply">联系我 </button>
+	<button class='bottom' open-type="contact" >在线客服 </button>
+	<button class='bottom' catchtap='tels' > 电话客服 </button>
+	

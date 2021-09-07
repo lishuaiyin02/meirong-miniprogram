@@ -58,4 +58,3 @@ def saveImage(user_nickname):
             return jsonify({'status': '500', 'msg': "图片上传失败"})
 
     print(filenames)
-    return "222"

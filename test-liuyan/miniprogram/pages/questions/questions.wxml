@@ -1,14 +1,14 @@
 <!--miniprogram/pages/questions/questions.wxml-->
 <mp-cells title="常见问题">
-  <!-- <block wx:for="{{questions}}" wx:for-index="idx" wx:for-item="order" wx:key="idx"> -->
-		<mp-cell value="{{questions.question}}">
+  <block wx:for="{{questions}}" wx:for-index="idx" wx:for-item="question" wx:key="idx">
+		<mp-cell >
       <view class="question">
-        <input value="21312erF十大发大水发大水广泛大使馆岁的法国是分公司分公司3" class="question" disabled="true"/>
+      Q: "{{question.question}}
       </view>
-      <view>
-        <input value="32423sdfj受到了放假啊是否" class="answer" disabled="true"/>
+      <view class="answer">
+       A: "{{question.answer}}"
       </view>
         
     </mp-cell>
-  <!-- </block> -->
+  </block>
 </mp-cells>

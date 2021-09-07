@@ -1,18 +1,41 @@
 // miniprogram/pages/questions/questions.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    questions:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    var serverUrl = app.serverUrl
+    wx.request({
+      url: serverUrl + 'getQuestions',
+      method: "GET",
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success:function(res){
+        
+        if (res.statusCode == 200 && res.data.status == "200"){
+          that.setData({
+            questions:res.data.questions,
+          })
+        }else{
+          wx.showToast({
+            title: "请求失败",
+            icon:"none",
+            duration: 2000
+          })
+        }
+      }
+    })
   },
 
   /**

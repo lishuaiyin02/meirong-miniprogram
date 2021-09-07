@@ -42,7 +42,6 @@ def getOrders():
     else:
         return jsonify({'status': '200', 'orders': json_format(orders)})
 
-    cancelOrder
 
 @bp.route('/cancelOrder')
 def cancelOrder():

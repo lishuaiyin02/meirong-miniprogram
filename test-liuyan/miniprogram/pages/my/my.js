@@ -16,6 +16,13 @@ Page({
     userInfo:null,
     userInfoString:''
   },
+
+  tels: function(){
+    wx.makePhoneCall({
+      phoneNumber: '18818521254',
+    })
+  },
+
   autoreply:function(){
     
     wx.cloud.callFunction({
